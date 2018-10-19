@@ -17,8 +17,10 @@
     /account: 
       get: 
         operationId: getAccounts
+        description: "List the accounts"
       post: 
         operationId: registerAccount
+        description: "Add a new account"
     /account/{id}: 
       get: 
         operationId: getAccountDetails
