@@ -285,4 +285,3 @@ definitions:
     properties:
       message:
         type: "string"
-        required: true
