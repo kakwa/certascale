@@ -47,9 +47,9 @@ paths:
       description: "Get the details of a specific account"
       operationId: "account_get"
       parameters:
-        - name: accountId
-          in: path
-          type: string
+        - name: "accountId"
+          in: "path"
+          type: "string"
       responses:
         200:
           description: "successful operation"
@@ -59,9 +59,9 @@ paths:
       description: "Remove the account"
       operationId: "account_delete"
       parameters:
-        - name: accountId
-          in: path
-          type: string
+        - name: "accountId"
+          in: "path"
+          type: "string"
       responses:
         200:
           description: "successful operation"
@@ -108,9 +108,9 @@ paths:
 
   /domain/{domainName}:
     parameters:
-      - name: domainName
-        in: path
-        type: string
+      - name: "domainName"
+        in: "path"
+        type: "string"
     get:
       description: "Get the details of a specific domain"
       operationId: "domain_get"
@@ -144,9 +144,9 @@ paths:
 
   /domain/{domainName}/certificate/:
     parameters:
-      - name: domainName
-        in: path
-        type: string
+      - name: "domainName"
+        in: "path"
+        type: "string"
     get:
       description: "Get the list of certificate for a specific domain"
       operationId: "certificate_list"
@@ -172,12 +172,12 @@ paths:
 
   /domain/{domainName}/certificate/{certificateId}:
     parameters:
-      - name: domainName
-        in: path
-        type: string
-      - name: certificateId
-        in: path
-        type: string
+      - name: "domainName"
+        in: "path"
+        type: "string"
+      - name: "certificateId"
+        in: "path"
+        type: "string"
     get:
       description: "Get a specific certificate and the associated key and CA"
       operationId: "certificate_get"
@@ -206,9 +206,9 @@ paths:
             $ref: "#/definitions/PluDefToChange"
   /notification/{notificationId}:
     parameters:
-      - name: notificationId
-        in: path
-        type: string
+      - name: "notificationId"
+        in: "path"
+        type: "string"
     get:
       description: "Get specific content for a notification"
       operationId: "notification_get"
