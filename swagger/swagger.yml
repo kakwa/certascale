@@ -17,6 +17,7 @@ paths:
   /account:
     get:
       description: "Get the list of accounts (paginated)"
+      operationId: "account_list"
       responses:
         200:
           description: "successful operation"
@@ -24,6 +25,7 @@ paths:
             $ref: "#/definitions/PluDefToChange"
     post:
       description: "Create a new account"
+      operationId: "account_create"
       parameters:
         - in: "body"
           name: "body"
@@ -38,11 +40,12 @@ paths:
 
   /account/{accountId}:
     parameters:
-      - name: accountId
-        in: path
-        type: string
+      - name: "accountId"
+        in: "path"
+        type: "string"
     get:
       description: "Get the details of a specific account"
+      operationId: "account_get"
       parameters:
         - name: accountId
           in: path
@@ -54,6 +57,7 @@ paths:
             $ref: "#/definitions/PluDefToChange"
     delete:
       description: "Remove the account"
+      operationId: "account_delete"
       parameters:
         - name: accountId
           in: path
@@ -64,22 +68,24 @@ paths:
           schema:
             $ref: "#/definitions/PluDefToChange"
     put:
-       description: "Update an existing account"
-       parameters:
-         - in: "body"
-           name: "body"
-           required: true
-           schema:
-             $ref: "#/definitions/PluDefToChange"
-       responses:
-         200:
-           description: "successful operation"
-           schema:
-             $ref: "#/definitions/PluDefToChange"
+      description: "Update an existing account"
+      operationId: "account_update"
+      parameters:
+        - in: "body"
+          name: "body"
+          required: true
+          schema:
+            $ref: "#/definitions/PluDefToChange"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/PluDefToChange"
 
   /domain:
     get:
       description: "Get the list of your domains"
+      operationId: "domain_list"
       responses:
         200:
           description: "successful operation"
@@ -87,6 +93,7 @@ paths:
             $ref: "#/definitions/PluDefToChange"
     post:
       description: "Register a new domain"
+      operationId: "domain_create"
       parameters:
         - in: "body"
           name: "body"
@@ -106,6 +113,7 @@ paths:
         type: string
     get:
       description: "Get the details of a specific domain"
+      operationId: "domain_get"
       responses:
         200:
           description: "successful operation"
@@ -113,24 +121,26 @@ paths:
             $ref: "#/definitions/PluDefToChange"
     delete:
       description: "Remove the domain"
+      operationId: "domain_delete"
       responses:
         200:
           description: "successful operation"
           schema:
             $ref: "#/definitions/PluDefToChange"
     put:
-       description: "Update an existing domain"
-       parameters:
-         - in: "body"
-           name: "body"
-           required: true
-           schema:
-             $ref: "#/definitions/PluDefToChange"
-       responses:
-         200:
-           description: "successful operation"
-           schema:
-             $ref: "#/definitions/PluDefToChange"
+      description: "Update an existing domain"
+      operationId: "domain_update"
+      parameters:
+        - in: "body"
+          name: "body"
+          required: true
+          schema:
+            $ref: "#/definitions/PluDefToChange"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/PluDefToChange"
 
   /domain/{domainName}/certificate/:
     parameters:
@@ -139,6 +149,7 @@ paths:
         type: string
     get:
       description: "Get the list of certificate for a specific domain"
+      operationId: "certificate_list"
       responses:
         200:
           description: "successful operation"
@@ -146,6 +157,7 @@ paths:
             $ref: "#/definitions/PluDefToChange"
     post:
       description: "Post an externally generated certificate"
+      operationId: "certificate_create"
       parameters:
         - in: "body"
           name: "body"
@@ -168,6 +180,7 @@ paths:
         type: string
     get:
       description: "Get a specific certificate and the associated key and CA"
+      operationId: "certificate_get"
       responses:
         200:
           description: "successful operation"
@@ -175,6 +188,7 @@ paths:
             $ref: "#/definitions/PluDefToChange"
     delete:
       description: "Remove the certificate"
+      operationId: "certificate_delete"
       responses:
         200:
           description: "successful operation"
@@ -184,6 +198,7 @@ paths:
   /notification:
     get:
       description: "Get all your certificate update notifications"
+      operationId: "notification_list"
       responses:
         200:
           description: "successful operation"
@@ -196,6 +211,7 @@ paths:
         type: string
     get:
       description: "Get specific content for a notification"
+      operationId: "notification_get"
       responses:
         200:
           description: "successful operation"
@@ -203,6 +219,7 @@ paths:
             $ref: "#/definitions/PluDefToChange"
     put:
       description: "Acknowledge the notification"
+      operationId: "notification_acknowledge"
       parameters:
         - in: "body"
           name: "body"
