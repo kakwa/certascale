@@ -33,7 +33,7 @@ paths:
           schema:
             $ref: "#/definitions/PluDefToChange"
       responses:
-        200:
+        201:
           description: "successful operation"
           schema:
             $ref: "#/definitions/PluDefToChange"
@@ -41,32 +41,33 @@ paths:
   /account/{accountId}:
     parameters:
       - name: "accountId"
+        required: true
         in: "path"
         type: "string"
     get:
       description: "Get the details of a specific account"
       operationId: "account_get"
-      parameters:
-        - name: "accountId"
-          in: "path"
-          type: "string"
       responses:
         200:
           description: "successful operation"
           schema:
             $ref: "#/definitions/PluDefToChange"
+        404:
+          description: "Account doesn't exist"
+          schema:
+            $ref: "#/definitions/DefaultError"
     delete:
       description: "Remove the account"
       operationId: "account_delete"
-      parameters:
-        - name: "accountId"
-          in: "path"
-          type: "string"
       responses:
         200:
           description: "successful operation"
           schema:
             $ref: "#/definitions/PluDefToChange"
+        404:
+          description: "Account doesn't exist"
+          schema:
+            $ref: "#/definitions/DefaultError"
     put:
       description: "Update an existing account"
       operationId: "account_update"
@@ -81,6 +82,10 @@ paths:
           description: "successful operation"
           schema:
             $ref: "#/definitions/PluDefToChange"
+        404:
+          description: "Account doesn't exist"
+          schema:
+            $ref: "#/definitions/DefaultError"
 
   /domain:
     get:
@@ -101,7 +106,7 @@ paths:
           schema:
             $ref: "#/definitions/PluDefToChange"
       responses:
-        200:
+        201:
           description: "successful operation"
           schema:
             $ref: "#/definitions/PluDefToChange"
@@ -109,6 +114,7 @@ paths:
   /domain/{domainName}:
     parameters:
       - name: "domainName"
+        required: true
         in: "path"
         type: "string"
     get:
@@ -141,11 +147,16 @@ paths:
           description: "successful operation"
           schema:
             $ref: "#/definitions/PluDefToChange"
+        404:
+          description: "Domain doesn't exist"
+          schema:
+            $ref: "#/definitions/DefaultError"
 
   /domain/{domainName}/certificate/:
     parameters:
       - name: "domainName"
         in: "path"
+        required: true
         type: "string"
     get:
       description: "Get the list of certificate for a specific domain"
@@ -155,6 +166,11 @@ paths:
           description: "successful operation"
           schema:
             $ref: "#/definitions/PluDefToChange"
+        404:
+          description: "Domain doesn't exist"
+          schema:
+            $ref: "#/definitions/DefaultError"
+
     post:
       description: "Post an externally generated certificate"
       operationId: "certificate_create"
@@ -165,18 +181,24 @@ paths:
           schema:
             $ref: "#/definitions/PluDefToChange"
       responses:
-        200:
+        201:
           description: "successful operation"
           schema:
             $ref: "#/definitions/PluDefToChange"
+        404:
+          description: "Domain doesn't exist"
+          schema:
+            $ref: "#/definitions/DefaultError"
 
   /domain/{domainName}/certificate/{certificateId}:
     parameters:
       - name: "domainName"
         in: "path"
+        required: true
         type: "string"
       - name: "certificateId"
         in: "path"
+        required: true
         type: "string"
     get:
       description: "Get a specific certificate and the associated key and CA"
@@ -186,6 +208,12 @@ paths:
           description: "successful operation"
           schema:
             $ref: "#/definitions/PluDefToChange"
+        404:
+          description: "Certificate or domain doesn't exist"
+          schema:
+            $ref: "#/definitions/DefaultError"
+
+
     delete:
       description: "Remove the certificate"
       operationId: "certificate_delete"
@@ -194,6 +222,10 @@ paths:
           description: "successful operation"
           schema:
             $ref: "#/definitions/PluDefToChange"
+        404:
+          description: "Certificate or domain doesn't exist"
+          schema:
+            $ref: "#/definitions/DefaultError"
 
   /notification:
     get:
@@ -204,10 +236,12 @@ paths:
           description: "successful operation"
           schema:
             $ref: "#/definitions/PluDefToChange"
+
   /notification/{notificationId}:
     parameters:
       - name: "notificationId"
         in: "path"
+        required: true
         type: "string"
     get:
       description: "Get specific content for a notification"
@@ -217,6 +251,10 @@ paths:
           description: "successful operation"
           schema:
             $ref: "#/definitions/PluDefToChange"
+        404:
+          description: "Notification doesn't exist"
+          schema:
+            $ref: "#/definitions/DefaultError"
     put:
       description: "Acknowledge the notification"
       operationId: "notification_acknowledge"
@@ -231,6 +269,10 @@ paths:
           description: "successful operation"
           schema:
             $ref: "#/definitions/PluDefToChange"
+        404:
+          description: "Notification doesn't exist"
+          schema:
+            $ref: "#/definitions/DefaultError"
 
 definitions:
   PluDefToChange:
@@ -238,3 +280,9 @@ definitions:
     properties:
       id:
         type: "integer"
+  DefaultError:
+    type: "object"
+    properties:
+      message:
+        type: "string"
+        required: true
