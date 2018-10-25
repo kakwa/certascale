@@ -1,0 +1,223 @@
+---
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: "certascale API"
+  description: "Certascale API documentation"
+  license:
+    name: "MIT"
+basePath: "/api"
+schemes:
+  - "http"
+consumes:
+  - "application/json"
+produces:
+  - "application/json"
+paths:
+  /account:
+    get:
+      description: "Get the list of accounts (paginated)"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/PluDefToChange"
+    post:
+      description: "Create a new account"
+      parameters:
+        - in: "body"
+          name: "body"
+          required: true
+          schema:
+            $ref: "#/definitions/PluDefToChange"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/PluDefToChange"
+
+  /account/{accountId}:
+    parameters:
+      - name: accountId
+        in: path
+        type: string
+    get:
+      description: "Get the details of a specific account"
+      parameters:
+        - name: accountId
+          in: path
+          type: string
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/PluDefToChange"
+    delete:
+      description: "Remove the account"
+      parameters:
+        - name: accountId
+          in: path
+          type: string
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/PluDefToChange"
+    put:
+       description: "Update an existing account"
+       parameters:
+         - in: "body"
+           name: "body"
+           required: true
+           schema:
+             $ref: "#/definitions/PluDefToChange"
+       responses:
+         200:
+           description: "successful operation"
+           schema:
+             $ref: "#/definitions/PluDefToChange"
+
+  /domain:
+    get:
+      description: "Get the list of your domains"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/PluDefToChange"
+    post:
+      description: "Register a new domain"
+      parameters:
+        - in: "body"
+          name: "body"
+          required: true
+          schema:
+            $ref: "#/definitions/PluDefToChange"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/PluDefToChange"
+
+  /domain/{domainName}:
+    parameters:
+      - name: domainName
+        in: path
+        type: string
+    get:
+      description: "Get the details of a specific domain"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/PluDefToChange"
+    delete:
+      description: "Remove the domain"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/PluDefToChange"
+    put:
+       description: "Update an existing domain"
+       parameters:
+         - in: "body"
+           name: "body"
+           required: true
+           schema:
+             $ref: "#/definitions/PluDefToChange"
+       responses:
+         200:
+           description: "successful operation"
+           schema:
+             $ref: "#/definitions/PluDefToChange"
+
+  /domain/{domainName}/certificate/:
+    parameters:
+      - name: domainName
+        in: path
+        type: string
+    get:
+      description: "Get the list of certificate for a specific domain"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/PluDefToChange"
+    post:
+      description: "Post an externally generated certificate"
+      parameters:
+        - in: "body"
+          name: "body"
+          required: true
+          schema:
+            $ref: "#/definitions/PluDefToChange"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/PluDefToChange"
+
+  /domain/{domainName}/certificate/{certificateId}:
+    parameters:
+      - name: domainName
+        in: path
+        type: string
+      - name: certificateId
+        in: path
+        type: string
+    get:
+      description: "Get a specific certificate and the associated key and CA"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/PluDefToChange"
+    delete:
+      description: "Remove the certificate"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/PluDefToChange"
+
+  /notification:
+    get:
+      description: "Get all your certificate update notifications"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/PluDefToChange"
+  /notification/{notificationId}:
+    parameters:
+      - name: notificationId
+        in: path
+        type: string
+    get:
+      description: "Get specific content for a notification"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/PluDefToChange"
+    put:
+      description: "Acknowledge the notification"
+      parameters:
+        - in: "body"
+          name: "body"
+          required: true
+          schema:
+            $ref: "#/definitions/PluDefToChange"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/PluDefToChange"
+
+definitions:
+  PluDefToChange:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
