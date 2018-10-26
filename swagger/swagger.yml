@@ -31,11 +31,12 @@ paths:
           name: "body"
           required: true
           schema:
-            $ref: "#/definitions/PluDefToChange"
+            $ref: "#/definitions/AccountDefinition"
       responses:
         201:
           description: "successful operation"
           schema:
+            $ref: "#/definitions/AccountDefinition"
             $ref: "#/definitions/PluDefToChange"
 
   /account/{accountId}:
@@ -285,3 +286,24 @@ definitions:
     properties:
       message:
         type: "string"
+  AccountCreateUpdate:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      tag:
+        properties: {}
+  AccountDefinition:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      creationDate:
+        type: "string"
+        format: "date-time"
+      ModificationDate:
+        type: "string"
+        format: "date-time"
+      tag:
+        properties: {}
+
