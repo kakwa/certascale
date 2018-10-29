@@ -36,7 +36,6 @@ paths:
         201:
           description: "successful operation"
           schema:
-            $ref: "#/definitions/AccountDefinition"
             $ref: "#/definitions/PluDefToChange"
 
   /account/{accountId}:
