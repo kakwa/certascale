@@ -88,6 +88,59 @@ paths:
           schema:
             $ref: "#/definitions/DefaultError"
 
+  /account/{accountId}/key/:
+    parameters:
+      - name: "accountId"
+        required: true
+        in: "path"
+        type: "string"
+    get:
+      description: "Get the list of keys for a given account"
+      operationId: "key_get"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/PluDefToChange"
+        404:
+          description: "Account doesn't exist"
+          schema:
+            $ref: "#/definitions/DefaultError"
+    post:
+      description: "Create a new key"
+      operationId: "key_create"
+      responses:
+        201:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/AccountDefinition"
+            $ref: "#/definitions/PluDefToChange"
+
+
+  /account/{accountId}/key/{keyId}:
+    parameters:
+      - name: "accountId"
+        required: true
+        in: "path"
+        type: "string"
+      - name: "keyId"
+        required: true
+        in: "path"
+        type: "string"
+
+    delete:
+      description: "Delete a given key"
+      operationId: "key_delete"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/PluDefToChange"
+        404:
+          description: "Account doesn't exist"
+          schema:
+            $ref: "#/definitions/DefaultError"
+
   /domain:
     get:
       description: "Get the list of your domains"
