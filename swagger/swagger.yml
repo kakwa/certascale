@@ -30,6 +30,8 @@ paths:
           $ref: '#/responses/403'
         '500':
           $ref: '#/responses/500'
+      tags:
+        - Account
     post:
       description: Create a new account
       operationId: account_create
@@ -53,7 +55,9 @@ paths:
           $ref: '#/responses/403'
         '500':
           $ref: '#/responses/500'
-  '/account/{accountId}':
+      tags:
+        - Account
+  /account/{accountId}:
     parameters:
       - name: accountId
         required: true
@@ -79,6 +83,8 @@ paths:
             $ref: '#/definitions/DefaultError'
         '500':
           $ref: '#/responses/500'
+      tags:
+        - Account
     delete:
       description: Remove the account
       operationId: account_delete
@@ -99,6 +105,8 @@ paths:
             $ref: '#/definitions/DefaultError'
         '500':
           $ref: '#/responses/500'
+      tags:
+        - Account
     put:
       description: Update an existing account
       operationId: account_update
@@ -125,15 +133,17 @@ paths:
             $ref: '#/definitions/DefaultError'
         '500':
           $ref: '#/responses/500'
-  '/account/{accountId}/key/':
+      tags:
+        - Account
+  /account/{accountId}/apikey/:
     parameters:
       - name: accountId
         required: true
         in: path
         type: string
     get:
-      description: Get the list of keys for a given account
-      operationId: key_get
+      description: Get the list of API keys for a given account
+      operationId: apikey_get
       responses:
         '200':
           description: successful operation
@@ -151,9 +161,11 @@ paths:
             $ref: '#/definitions/DefaultError'
         '500':
           $ref: '#/responses/500'
+      tags:
+        - Account
     post:
-      description: Create a new key
-      operationId: key_create
+      description: Create a new API key
+      operationId: apikey_create
       responses:
         '201':
           description: successful operation
@@ -167,7 +179,9 @@ paths:
           $ref: '#/responses/403'
         '500':
           $ref: '#/responses/500'
-  '/account/{accountId}/key/{keyId}':
+      tags:
+        - Account
+  /account/{accountId}/apikey/{keyId}:
     parameters:
       - name: accountId
         required: true
@@ -179,7 +193,7 @@ paths:
         type: string
     delete:
       description: Delete a given key
-      operationId: key_delete
+      operationId: apikey_delete
       responses:
         '200':
           description: successful operation
@@ -197,6 +211,8 @@ paths:
             $ref: '#/definitions/DefaultError'
         '500':
           $ref: '#/responses/500'
+      tags:
+        - Account
   /domain:
     get:
       description: Get the list of your domains
@@ -214,6 +230,8 @@ paths:
           $ref: '#/responses/403'
         '500':
           $ref: '#/responses/500'
+      tags:
+        - Domain
     post:
       description: Register a new domain
       operationId: domain_create
@@ -236,7 +254,9 @@ paths:
           $ref: '#/responses/403'
         '500':
           $ref: '#/responses/500'
-  '/domain/{domainName}':
+      tags:
+        - Domain
+  /domain/{domainName}:
     parameters:
       - name: domainName
         required: true
@@ -258,6 +278,8 @@ paths:
           $ref: '#/responses/403'
         '500':
           $ref: '#/responses/500'
+      tags:
+        - Domain
     delete:
       description: Remove the domain
       operationId: domain_delete
@@ -274,6 +296,8 @@ paths:
           $ref: '#/responses/403'
         '500':
           $ref: '#/responses/500'
+      tags:
+        - Domain
     put:
       description: Update an existing domain
       operationId: domain_update
@@ -300,7 +324,9 @@ paths:
             $ref: '#/definitions/DefaultError'
         '500':
           $ref: '#/responses/500'
-  '/domain/{domainName}/certificate/':
+      tags:
+        - Domain
+  /domain/{domainName}/certificate/:
     parameters:
       - name: domainName
         in: path
@@ -326,6 +352,8 @@ paths:
             $ref: '#/definitions/DefaultError'
         '500':
           $ref: '#/responses/500'
+      tags:
+        - Domain
     post:
       description: Post an externally generated certificate
       operationId: certificate_create
@@ -352,7 +380,9 @@ paths:
             $ref: '#/definitions/DefaultError'
         '500':
           $ref: '#/responses/500'
-  '/domain/{domainName}/certificate/{certificateId}':
+      tags:
+        - Domain
+  /domain/{domainName}/certificate/{certificateId}:
     parameters:
       - name: domainName
         in: path
@@ -382,6 +412,8 @@ paths:
             $ref: '#/definitions/DefaultError'
         '500':
           $ref: '#/responses/500'
+      tags:
+        - Domain
     delete:
       description: Remove the certificate
       operationId: certificate_delete
@@ -402,6 +434,8 @@ paths:
             $ref: '#/definitions/DefaultError'
         '500':
           $ref: '#/responses/500'
+      tags:
+        - Domain
   /notification:
     get:
       description: Get all your certificate update notifications
@@ -419,7 +453,9 @@ paths:
           $ref: '#/responses/403'
         '500':
           $ref: '#/responses/500'
-  '/notification/{notificationId}':
+      tags:
+        - Notification
+  /notification/{notificationId}:
     parameters:
       - name: notificationId
         in: path
@@ -445,6 +481,8 @@ paths:
             $ref: '#/definitions/DefaultError'
         '500':
           $ref: '#/responses/500'
+      tags:
+        - Notification
     put:
       description: Acknowledge the notification
       operationId: notification_acknowledge
@@ -471,6 +509,10 @@ paths:
             $ref: '#/definitions/DefaultError'
         '500':
           $ref: '#/responses/500'
+      tags:
+        - Notification
+
+# Default response for most of the verbs
 responses:
   '400':
     description: Bad Request
@@ -488,6 +530,8 @@ responses:
     description: Internal Server Error
     schema:
       $ref: '#/definitions/DefaultError'
+
+# Data structure definition
 definitions:
   PluDefToChange:
     type: object
