@@ -1,520 +1,505 @@
----
-swagger: "2.0"
+swagger: '2.0'
 info:
-  version: "1.0.0"
-  title: "certascale API"
-  description: "Certascale API documentation"
+  version: 1.0.0
+  title: certascale API
+  description: Certascale API documentation
   license:
-    name: "MIT"
-basePath: "/api"
+    name: MIT
+basePath: /api
 schemes:
-  - "http"
+  - http
 consumes:
-  - "application/json"
+  - application/json
 produces:
-  - "application/json"
+  - application/json
 paths:
   /account:
     get:
-      description: "Get the list of accounts (paginated)"
-      operationId: "account_list"
+      description: Get the list of accounts (paginated)
+      operationId: account_list
       responses:
-        200:
-          description: "successful operation"
+        '200':
+          description: successful operation
           schema:
-            $ref: "AccountDefinitionList"
-        400: 
+            $ref: '#/definitions/AccountDefinitionList'
+        '400':
           $ref: '#/responses/400'
-        401:
+        '401':
           $ref: '#/responses/401'
-        403:
+        '403':
           $ref: '#/responses/403'
-        500:
+        '500':
           $ref: '#/responses/500'
     post:
-      description: "Create a new account"
-      operationId: "account_create"
+      description: Create a new account
+      operationId: account_create
       parameters:
-        - in: "body"
-          name: "body"
+        - in: body
+          name: body
           required: true
           schema:
-            $ref: "#/definitions/AccountCreateUpdate"
-          description:
-            "Data structure to create the account"
+            $ref: '#/definitions/AccountCreateUpdate'
+          description: Data structure to create the account
       responses:
-        201:
-          description: "successful operation"
+        '201':
+          description: successful operation
           schema:
-            $ref: "#/definitions/AccountDefinition"
-        400: 
+            $ref: '#/definitions/AccountDefinition'
+        '400':
           $ref: '#/responses/400'
-        401:
+        '401':
           $ref: '#/responses/401'
-        403:
+        '403':
           $ref: '#/responses/403'
-        500:
+        '500':
           $ref: '#/responses/500'
-  /account/{accountId}:
+  '/account/{accountId}':
     parameters:
-      - name: "accountId"
+      - name: accountId
         required: true
-        in: "path"
-        type: "string"
+        in: path
+        type: string
     get:
-      description: "Get the details of a specific account"
-      operationId: "account_get"
+      description: Get the details of a specific account
+      operationId: account_get
       responses:
-        200:
-          description: "successful operation"
+        '200':
+          description: successful operation
           schema:
-            $ref: "#/definitions/AccountDefinition"
-        404:
-          description: "Account doesn't exist"
-          schema:
-            $ref: "#/definitions/DefaultError"
-        400: 
+            $ref: '#/definitions/AccountDefinition'
+        '400':
           $ref: '#/responses/400'
-        401:
+        '401':
           $ref: '#/responses/401'
-        403:
+        '403':
           $ref: '#/responses/403'
-        500:
+        '404':
+          description: Account doesn't exist
+          schema:
+            $ref: '#/definitions/DefaultError'
+        '500':
           $ref: '#/responses/500'
     delete:
-      description: "Remove the account"
-      operationId: "account_delete"
+      description: Remove the account
+      operationId: account_delete
       responses:
-        200:
-          description: "successful operation"
+        '200':
+          description: successful operation
           schema:
-            $ref: "#/definitions/DefaultMessage"
-        404:
-          description: "Account doesn't exist"
-          schema:
-            $ref: "#/definitions/DefaultError"
-        400: 
+            $ref: '#/definitions/DefaultMessage'
+        '400':
           $ref: '#/responses/400'
-        401:
+        '401':
           $ref: '#/responses/401'
-        403:
+        '403':
           $ref: '#/responses/403'
-        500:
+        '404':
+          description: Account doesn't exist
+          schema:
+            $ref: '#/definitions/DefaultError'
+        '500':
           $ref: '#/responses/500'
     put:
-      description: "Update an existing account"
-      operationId: "account_update"
+      description: Update an existing account
+      operationId: account_update
       parameters:
-        - in: "body"
-          name: "body"
+        - in: body
+          name: body
           required: true
           schema:
-            $ref: "#/definitions/PluDefToChange"
+            $ref: '#/definitions/PluDefToChange'
       responses:
-        200:
-          description: "successful operation"
+        '200':
+          description: successful operation
           schema:
-            $ref: "#/definitions/PluDefToChange"
-        404:
-          description: "Account doesn't exist"
-          schema:
-            $ref: "#/definitions/DefaultError"
-        400: 
+            $ref: '#/definitions/PluDefToChange'
+        '400':
           $ref: '#/responses/400'
-        401:
+        '401':
           $ref: '#/responses/401'
-        403:
+        '403':
           $ref: '#/responses/403'
-        500:
+        '404':
+          description: Account doesn't exist
+          schema:
+            $ref: '#/definitions/DefaultError'
+        '500':
           $ref: '#/responses/500'
-  /account/{accountId}/key/:
+  '/account/{accountId}/key/':
     parameters:
-      - name: "accountId"
+      - name: accountId
         required: true
-        in: "path"
-        type: "string"
+        in: path
+        type: string
     get:
-      description: "Get the list of keys for a given account"
-      operationId: "key_get"
+      description: Get the list of keys for a given account
+      operationId: key_get
       responses:
-        200:
-          description: "successful operation"
+        '200':
+          description: successful operation
           schema:
-            $ref: "#/definitions/PluDefToChange"
-        404:
-          description: "Account doesn't exist"
-          schema:
-            $ref: "#/definitions/DefaultError"
-        400: 
+            $ref: '#/definitions/PluDefToChange'
+        '400':
           $ref: '#/responses/400'
-        401:
+        '401':
           $ref: '#/responses/401'
-        403:
+        '403':
           $ref: '#/responses/403'
-        500:
+        '404':
+          description: Account doesn't exist
+          schema:
+            $ref: '#/definitions/DefaultError'
+        '500':
           $ref: '#/responses/500'
     post:
-      description: "Create a new key"
-      operationId: "key_create"
+      description: Create a new key
+      operationId: key_create
       responses:
-        201:
-          description: "successful operation"
+        '201':
+          description: successful operation
           schema:
-            $ref: "#/definitions/PluDefToChange"
-        400: 
+            $ref: '#/definitions/PluDefToChange'
+        '400':
           $ref: '#/responses/400'
-        401:
+        '401':
           $ref: '#/responses/401'
-        403:
+        '403':
           $ref: '#/responses/403'
-        500:
+        '500':
           $ref: '#/responses/500'
-  /account/{accountId}/key/{keyId}:
+  '/account/{accountId}/key/{keyId}':
     parameters:
-      - name: "accountId"
+      - name: accountId
         required: true
-        in: "path"
-        type: "string"
-      - name: "keyId"
+        in: path
+        type: string
+      - name: keyId
         required: true
-        in: "path"
-        type: "string"
+        in: path
+        type: string
     delete:
-      description: "Delete a given key"
-      operationId: "key_delete"
+      description: Delete a given key
+      operationId: key_delete
       responses:
-        200:
-          description: "successful operation"
+        '200':
+          description: successful operation
           schema:
-            $ref: "#/definitions/PluDefToChange"
-        404:
-          description: "Account doesn't exist"
-          schema:
-            $ref: "#/definitions/DefaultError"
-        400: 
+            $ref: '#/definitions/PluDefToChange'
+        '400':
           $ref: '#/responses/400'
-        401:
+        '401':
           $ref: '#/responses/401'
-        403:
+        '403':
           $ref: '#/responses/403'
-        500:
+        '404':
+          description: Account doesn't exist
+          schema:
+            $ref: '#/definitions/DefaultError'
+        '500':
           $ref: '#/responses/500'
   /domain:
     get:
-      description: "Get the list of your domains"
-      operationId: "domain_list"
+      description: Get the list of your domains
+      operationId: domain_list
       responses:
-        200:
-          description: "successful operation"
+        '200':
+          description: successful operation
           schema:
-            $ref: "#/definitions/PluDefToChange"
-        400: 
+            $ref: '#/definitions/PluDefToChange'
+        '400':
           $ref: '#/responses/400'
-        401:
+        '401':
           $ref: '#/responses/401'
-        403:
+        '403':
           $ref: '#/responses/403'
-        500:
+        '500':
           $ref: '#/responses/500'
     post:
-      description: "Register a new domain"
-      operationId: "domain_create"
+      description: Register a new domain
+      operationId: domain_create
       parameters:
-        - in: "body"
-          name: "body"
+        - in: body
+          name: body
           required: true
           schema:
-            $ref: "#/definitions/PluDefToChange"
+            $ref: '#/definitions/PluDefToChange'
       responses:
-        201:
-          description: "successful operation"
+        '201':
+          description: successful operation
           schema:
-            $ref: "#/definitions/PluDefToChange"
-        400: 
+            $ref: '#/definitions/PluDefToChange'
+        '400':
           $ref: '#/responses/400'
-        401:
+        '401':
           $ref: '#/responses/401'
-        403:
+        '403':
           $ref: '#/responses/403'
-        500:
+        '500':
           $ref: '#/responses/500'
-  /domain/{domainName}:
+  '/domain/{domainName}':
     parameters:
-      - name: "domainName"
+      - name: domainName
         required: true
-        in: "path"
-        type: "string"
+        in: path
+        type: string
     get:
-      description: "Get the details of a specific domain"
-      operationId: "domain_get"
+      description: Get the details of a specific domain
+      operationId: domain_get
       responses:
-        200:
-          description: "successful operation"
+        '200':
+          description: successful operation
           schema:
-            $ref: "#/definitions/PluDefToChange"
-        400: 
+            $ref: '#/definitions/PluDefToChange'
+        '400':
           $ref: '#/responses/400'
-        401:
+        '401':
           $ref: '#/responses/401'
-        403:
+        '403':
           $ref: '#/responses/403'
-        500:
+        '500':
           $ref: '#/responses/500'
     delete:
-      description: "Remove the domain"
-      operationId: "domain_delete"
+      description: Remove the domain
+      operationId: domain_delete
       responses:
-        200:
-          description: "successful operation"
+        '200':
+          description: successful operation
           schema:
-            $ref: "#/definitions/PluDefToChange"
-        400: 
+            $ref: '#/definitions/PluDefToChange'
+        '400':
           $ref: '#/responses/400'
-        401:
+        '401':
           $ref: '#/responses/401'
-        403:
+        '403':
           $ref: '#/responses/403'
-        500:
+        '500':
           $ref: '#/responses/500'
     put:
-      description: "Update an existing domain"
-      operationId: "domain_update"
+      description: Update an existing domain
+      operationId: domain_update
       parameters:
-        - in: "body"
-          name: "body"
+        - in: body
+          name: body
           required: true
           schema:
-            $ref: "#/definitions/PluDefToChange"
+            $ref: '#/definitions/PluDefToChange'
       responses:
-        200:
-          description: "successful operation"
+        '200':
+          description: successful operation
           schema:
-            $ref: "#/definitions/PluDefToChange"
-        404:
-          description: "Domain doesn't exist"
-          schema:
-            $ref: "#/definitions/DefaultError"
-        400: 
+            $ref: '#/definitions/PluDefToChange'
+        '400':
           $ref: '#/responses/400'
-        401:
+        '401':
           $ref: '#/responses/401'
-        403:
+        '403':
           $ref: '#/responses/403'
-        500:
+        '404':
+          description: Domain doesn't exist
+          schema:
+            $ref: '#/definitions/DefaultError'
+        '500':
           $ref: '#/responses/500'
-  /domain/{domainName}/certificate/:
+  '/domain/{domainName}/certificate/':
     parameters:
-      - name: "domainName"
-        in: "path"
+      - name: domainName
+        in: path
         required: true
-        type: "string"
+        type: string
     get:
-      description: "Get the list of certificate for a specific domain"
-      operationId: "certificate_list"
+      description: Get the list of certificate for a specific domain
+      operationId: certificate_list
       responses:
-        200:
-          description: "successful operation"
+        '200':
+          description: successful operation
           schema:
-            $ref: "#/definitions/PluDefToChange"
-        404:
-          description: "Domain doesn't exist"
-          schema:
-            $ref: "#/definitions/DefaultError"
-        400: 
+            $ref: '#/definitions/PluDefToChange'
+        '400':
           $ref: '#/responses/400'
-        401:
+        '401':
           $ref: '#/responses/401'
-        403:
+        '403':
           $ref: '#/responses/403'
-        500:
+        '404':
+          description: Domain doesn't exist
+          schema:
+            $ref: '#/definitions/DefaultError'
+        '500':
           $ref: '#/responses/500'
     post:
-      description: "Post an externally generated certificate"
-      operationId: "certificate_create"
+      description: Post an externally generated certificate
+      operationId: certificate_create
       parameters:
-        - in: "body"
-          name: "body"
+        - in: body
+          name: body
           required: true
           schema:
-            $ref: "#/definitions/PluDefToChange"
+            $ref: '#/definitions/PluDefToChange'
       responses:
-        201:
-          description: "successful operation"
+        '201':
+          description: successful operation
           schema:
-            $ref: "#/definitions/PluDefToChange"
-        404:
-          description: "Domain doesn't exist"
-          schema:
-            $ref: "#/definitions/DefaultError"
-        400: 
+            $ref: '#/definitions/PluDefToChange'
+        '400':
           $ref: '#/responses/400'
-        401:
+        '401':
           $ref: '#/responses/401'
-        403:
+        '403':
           $ref: '#/responses/403'
-        500:
+        '404':
+          description: Domain doesn't exist
+          schema:
+            $ref: '#/definitions/DefaultError'
+        '500':
           $ref: '#/responses/500'
-  /domain/{domainName}/certificate/{certificateId}:
+  '/domain/{domainName}/certificate/{certificateId}':
     parameters:
-      - name: "domainName"
-        in: "path"
+      - name: domainName
+        in: path
         required: true
-        type: "string"
-      - name: "certificateId"
-        in: "path"
+        type: string
+      - name: certificateId
+        in: path
         required: true
-        type: "string"
+        type: string
     get:
-      description: "Get a specific certificate and the associated key and CA"
-      operationId: "certificate_get"
+      description: Get a specific certificate and the associated key and CA
+      operationId: certificate_get
       responses:
-        200:
-          description: "successful operation"
+        '200':
+          description: successful operation
           schema:
-            $ref: "#/definitions/PluDefToChange"
-        404:
-          description: "Certificate or domain doesn't exist"
-          schema:
-            $ref: "#/definitions/DefaultError"
-        400: 
+            $ref: '#/definitions/PluDefToChange'
+        '400':
           $ref: '#/responses/400'
-        401:
+        '401':
           $ref: '#/responses/401'
-        403:
+        '403':
           $ref: '#/responses/403'
-        500:
+        '404':
+          description: Certificate or domain doesn't exist
+          schema:
+            $ref: '#/definitions/DefaultError'
+        '500':
           $ref: '#/responses/500'
     delete:
-      description: "Remove the certificate"
-      operationId: "certificate_delete"
+      description: Remove the certificate
+      operationId: certificate_delete
       responses:
-        200:
-          description: "successful operation"
+        '200':
+          description: successful operation
           schema:
-            $ref: "#/definitions/PluDefToChange"
-        404:
-          description: "Certificate or domain doesn't exist"
-          schema:
-            $ref: "#/definitions/DefaultError"
-        400: 
+            $ref: '#/definitions/PluDefToChange'
+        '400':
           $ref: '#/responses/400'
-        401:
+        '401':
           $ref: '#/responses/401'
-        403:
+        '403':
           $ref: '#/responses/403'
-        500:
+        '404':
+          description: Certificate or domain doesn't exist
+          schema:
+            $ref: '#/definitions/DefaultError'
+        '500':
           $ref: '#/responses/500'
   /notification:
     get:
-      description: "Get all your certificate update notifications"
-      operationId: "notification_list"
+      description: Get all your certificate update notifications
+      operationId: notification_list
       responses:
-        200:
-          description: "successful operation"
+        '200':
+          description: successful operation
           schema:
-            $ref: "#/definitions/PluDefToChange"
-        400: 
+            $ref: '#/definitions/PluDefToChange'
+        '400':
           $ref: '#/responses/400'
-        401:
+        '401':
           $ref: '#/responses/401'
-        403:
+        '403':
           $ref: '#/responses/403'
-        500:
+        '500':
           $ref: '#/responses/500'
-  /notification/{notificationId}:
+  '/notification/{notificationId}':
     parameters:
-      - name: "notificationId"
-        in: "path"
+      - name: notificationId
+        in: path
         required: true
-        type: "string"
+        type: string
     get:
-      description: "Get specific content for a notification"
-      operationId: "notification_get"
+      description: Get specific content for a notification
+      operationId: notification_get
       responses:
-        200:
-          description: "successful operation"
+        '200':
+          description: successful operation
           schema:
-            $ref: "#/definitions/PluDefToChange"
-        404:
-          description: "Notification doesn't exist"
-          schema:
-            $ref: "#/definitions/DefaultError"
-        400: 
+            $ref: '#/definitions/PluDefToChange'
+        '400':
           $ref: '#/responses/400'
-        401:
+        '401':
           $ref: '#/responses/401'
-        403:
+        '403':
           $ref: '#/responses/403'
-        500:
+        '404':
+          description: Notification doesn't exist
+          schema:
+            $ref: '#/definitions/DefaultError'
+        '500':
           $ref: '#/responses/500'
     put:
-      description: "Acknowledge the notification"
-      operationId: "notification_acknowledge"
+      description: Acknowledge the notification
+      operationId: notification_acknowledge
       parameters:
-        - in: "body"
-          name: "body"
+        - in: body
+          name: body
           required: true
           schema:
-            $ref: "#/definitions/PluDefToChange"
+            $ref: '#/definitions/PluDefToChange'
       responses:
-        200:
-          description: "successful operation"
+        '200':
+          description: successful operation
           schema:
-            $ref: "#/definitions/PluDefToChange"
-        404:
-          description: "Notification doesn't exist"
-          schema:
-            $ref: "#/definitions/DefaultError"
-        400: 
+            $ref: '#/definitions/PluDefToChange'
+        '400':
           $ref: '#/responses/400'
-        401:
+        '401':
           $ref: '#/responses/401'
-        403:
+        '403':
           $ref: '#/responses/403'
-        500:
+        '404':
+          description: Notification doesn't exist
+          schema:
+            $ref: '#/definitions/DefaultError'
+        '500':
           $ref: '#/responses/500'
-
 responses:
-  400:
+  '400':
     description: Bad Request
     schema:
-      $ref: "#/definitions/DefaultError"
-  401:
+      $ref: '#/definitions/DefaultError'
+  '401':
     description: Unauthorized
     schema:
-      $ref: "#/definitions/DefaultError"
-  403:
+      $ref: '#/definitions/DefaultError'
+  '403':
     description: Forbidden
     schema:
-      $ref: "#/definitions/DefaultError"
-  500:
+      $ref: '#/definitions/DefaultError'
+  '500':
     description: Internal Server Error
     schema:
-      $ref: "#/definitions/DefaultError"
-
+      $ref: '#/definitions/DefaultError'
 definitions:
   PluDefToChange:
-    type: "object"
+    type: object
     properties:
       id:
-        type: "integer"
-
-  AccountBase:
-    type: "object"
-    properties:
-      required:
-        - name
-      name:
-        type: "string"
-      tag:
-        properties: {}
-
+        type: integer
   AccountCreateUpdate:
-    description: "Account definition"
-    type: "object"
+    description: Account definition
+    type: object
     properties:
       name:
-        type: "string"
+        type: string
       permission:
         type: string
         enum:
@@ -524,13 +509,12 @@ definitions:
           - SelfRegisterDomain
       tag:
         properties: {}
-
   AccountDefinition:
-    description: "Account definition"
-    type: "object"
+    description: Account definition
+    type: object
     properties:
       name:
-        type: "string"
+        type: string
       permission:
         type: string
         enum:
@@ -546,33 +530,30 @@ definitions:
           type: string
       create_date:
         type: string
-        format: "date-time"
+        format: date-time
       last_modification_date:
         type: string
-        format: "date-time"
-
+        format: date-time
   AccountDefinitionList:
     type: array
     items:
       $ref: '#/definitions/AccountDefinition'
-
   DefaultError:
-    type: "object"
+    type: object
     properties:
       code:
-        type: "string"
-        enum: 
-          - "AccessDeny"
-          - "InsufficientPermission"
-          - "InvalidInputData"
-        description: "Error code"
+        type: string
+        enum:
+          - AccessDeny
+          - InsufficientPermission
+          - InvalidInputData
+        description: Error code
       message:
-        type: "string"
-        description: "Error message details"
-
+        type: string
+        description: Error message details
   DefaultMessage:
-    type: "object"
+    type: object
     properties:
       message:
-        type: "string"
-        description: "Message"
+        type: string
+        description: Message
