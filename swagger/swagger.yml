@@ -22,7 +22,15 @@ paths:
         200:
           description: "successful operation"
           schema:
-            $ref: "#/definitions/PluDefToChange"
+            $ref: "AccountDefinitionList"
+        400: 
+          $ref: '#/responses/400'
+        401:
+          $ref: '#/responses/401'
+        403:
+          $ref: '#/responses/403'
+        500:
+          $ref: '#/responses/500'
     post:
       description: "Create a new account"
       operationId: "account_create"
@@ -31,13 +39,22 @@ paths:
           name: "body"
           required: true
           schema:
-            $ref: "#/definitions/AccountDefinition"
+            $ref: "#/definitions/AccountCreateUpdate"
+          description:
+            "Data structure to create the account"
       responses:
         201:
           description: "successful operation"
           schema:
-            $ref: "#/definitions/PluDefToChange"
-
+            $ref: "#/definitions/AccountDefinition"
+        400: 
+          $ref: '#/responses/400'
+        401:
+          $ref: '#/responses/401'
+        403:
+          $ref: '#/responses/403'
+        500:
+          $ref: '#/responses/500'
   /account/{accountId}:
     parameters:
       - name: "accountId"
@@ -51,11 +68,19 @@ paths:
         200:
           description: "successful operation"
           schema:
-            $ref: "#/definitions/PluDefToChange"
+            $ref: "#/definitions/AccountDefinition"
         404:
           description: "Account doesn't exist"
           schema:
             $ref: "#/definitions/DefaultError"
+        400: 
+          $ref: '#/responses/400'
+        401:
+          $ref: '#/responses/401'
+        403:
+          $ref: '#/responses/403'
+        500:
+          $ref: '#/responses/500'
     delete:
       description: "Remove the account"
       operationId: "account_delete"
@@ -63,11 +88,19 @@ paths:
         200:
           description: "successful operation"
           schema:
-            $ref: "#/definitions/PluDefToChange"
+            $ref: "#/definitions/DefaultMessage"
         404:
           description: "Account doesn't exist"
           schema:
             $ref: "#/definitions/DefaultError"
+        400: 
+          $ref: '#/responses/400'
+        401:
+          $ref: '#/responses/401'
+        403:
+          $ref: '#/responses/403'
+        500:
+          $ref: '#/responses/500'
     put:
       description: "Update an existing account"
       operationId: "account_update"
@@ -86,7 +119,14 @@ paths:
           description: "Account doesn't exist"
           schema:
             $ref: "#/definitions/DefaultError"
-
+        400: 
+          $ref: '#/responses/400'
+        401:
+          $ref: '#/responses/401'
+        403:
+          $ref: '#/responses/403'
+        500:
+          $ref: '#/responses/500'
   /account/{accountId}/key/:
     parameters:
       - name: "accountId"
@@ -105,6 +145,14 @@ paths:
           description: "Account doesn't exist"
           schema:
             $ref: "#/definitions/DefaultError"
+        400: 
+          $ref: '#/responses/400'
+        401:
+          $ref: '#/responses/401'
+        403:
+          $ref: '#/responses/403'
+        500:
+          $ref: '#/responses/500'
     post:
       description: "Create a new key"
       operationId: "key_create"
@@ -112,10 +160,15 @@ paths:
         201:
           description: "successful operation"
           schema:
-            $ref: "#/definitions/AccountDefinition"
             $ref: "#/definitions/PluDefToChange"
-
-
+        400: 
+          $ref: '#/responses/400'
+        401:
+          $ref: '#/responses/401'
+        403:
+          $ref: '#/responses/403'
+        500:
+          $ref: '#/responses/500'
   /account/{accountId}/key/{keyId}:
     parameters:
       - name: "accountId"
@@ -126,7 +179,6 @@ paths:
         required: true
         in: "path"
         type: "string"
-
     delete:
       description: "Delete a given key"
       operationId: "key_delete"
@@ -139,7 +191,14 @@ paths:
           description: "Account doesn't exist"
           schema:
             $ref: "#/definitions/DefaultError"
-
+        400: 
+          $ref: '#/responses/400'
+        401:
+          $ref: '#/responses/401'
+        403:
+          $ref: '#/responses/403'
+        500:
+          $ref: '#/responses/500'
   /domain:
     get:
       description: "Get the list of your domains"
@@ -149,6 +208,14 @@ paths:
           description: "successful operation"
           schema:
             $ref: "#/definitions/PluDefToChange"
+        400: 
+          $ref: '#/responses/400'
+        401:
+          $ref: '#/responses/401'
+        403:
+          $ref: '#/responses/403'
+        500:
+          $ref: '#/responses/500'
     post:
       description: "Register a new domain"
       operationId: "domain_create"
@@ -163,7 +230,14 @@ paths:
           description: "successful operation"
           schema:
             $ref: "#/definitions/PluDefToChange"
-
+        400: 
+          $ref: '#/responses/400'
+        401:
+          $ref: '#/responses/401'
+        403:
+          $ref: '#/responses/403'
+        500:
+          $ref: '#/responses/500'
   /domain/{domainName}:
     parameters:
       - name: "domainName"
@@ -178,6 +252,14 @@ paths:
           description: "successful operation"
           schema:
             $ref: "#/definitions/PluDefToChange"
+        400: 
+          $ref: '#/responses/400'
+        401:
+          $ref: '#/responses/401'
+        403:
+          $ref: '#/responses/403'
+        500:
+          $ref: '#/responses/500'
     delete:
       description: "Remove the domain"
       operationId: "domain_delete"
@@ -186,6 +268,14 @@ paths:
           description: "successful operation"
           schema:
             $ref: "#/definitions/PluDefToChange"
+        400: 
+          $ref: '#/responses/400'
+        401:
+          $ref: '#/responses/401'
+        403:
+          $ref: '#/responses/403'
+        500:
+          $ref: '#/responses/500'
     put:
       description: "Update an existing domain"
       operationId: "domain_update"
@@ -204,7 +294,14 @@ paths:
           description: "Domain doesn't exist"
           schema:
             $ref: "#/definitions/DefaultError"
-
+        400: 
+          $ref: '#/responses/400'
+        401:
+          $ref: '#/responses/401'
+        403:
+          $ref: '#/responses/403'
+        500:
+          $ref: '#/responses/500'
   /domain/{domainName}/certificate/:
     parameters:
       - name: "domainName"
@@ -223,7 +320,14 @@ paths:
           description: "Domain doesn't exist"
           schema:
             $ref: "#/definitions/DefaultError"
-
+        400: 
+          $ref: '#/responses/400'
+        401:
+          $ref: '#/responses/401'
+        403:
+          $ref: '#/responses/403'
+        500:
+          $ref: '#/responses/500'
     post:
       description: "Post an externally generated certificate"
       operationId: "certificate_create"
@@ -242,7 +346,14 @@ paths:
           description: "Domain doesn't exist"
           schema:
             $ref: "#/definitions/DefaultError"
-
+        400: 
+          $ref: '#/responses/400'
+        401:
+          $ref: '#/responses/401'
+        403:
+          $ref: '#/responses/403'
+        500:
+          $ref: '#/responses/500'
   /domain/{domainName}/certificate/{certificateId}:
     parameters:
       - name: "domainName"
@@ -265,8 +376,14 @@ paths:
           description: "Certificate or domain doesn't exist"
           schema:
             $ref: "#/definitions/DefaultError"
-
-
+        400: 
+          $ref: '#/responses/400'
+        401:
+          $ref: '#/responses/401'
+        403:
+          $ref: '#/responses/403'
+        500:
+          $ref: '#/responses/500'
     delete:
       description: "Remove the certificate"
       operationId: "certificate_delete"
@@ -279,7 +396,14 @@ paths:
           description: "Certificate or domain doesn't exist"
           schema:
             $ref: "#/definitions/DefaultError"
-
+        400: 
+          $ref: '#/responses/400'
+        401:
+          $ref: '#/responses/401'
+        403:
+          $ref: '#/responses/403'
+        500:
+          $ref: '#/responses/500'
   /notification:
     get:
       description: "Get all your certificate update notifications"
@@ -289,7 +413,14 @@ paths:
           description: "successful operation"
           schema:
             $ref: "#/definitions/PluDefToChange"
-
+        400: 
+          $ref: '#/responses/400'
+        401:
+          $ref: '#/responses/401'
+        403:
+          $ref: '#/responses/403'
+        500:
+          $ref: '#/responses/500'
   /notification/{notificationId}:
     parameters:
       - name: "notificationId"
@@ -308,6 +439,14 @@ paths:
           description: "Notification doesn't exist"
           schema:
             $ref: "#/definitions/DefaultError"
+        400: 
+          $ref: '#/responses/400'
+        401:
+          $ref: '#/responses/401'
+        403:
+          $ref: '#/responses/403'
+        500:
+          $ref: '#/responses/500'
     put:
       description: "Acknowledge the notification"
       operationId: "notification_acknowledge"
@@ -326,6 +465,32 @@ paths:
           description: "Notification doesn't exist"
           schema:
             $ref: "#/definitions/DefaultError"
+        400: 
+          $ref: '#/responses/400'
+        401:
+          $ref: '#/responses/401'
+        403:
+          $ref: '#/responses/403'
+        500:
+          $ref: '#/responses/500'
+
+responses:
+  400:
+    description: Bad Request
+    schema:
+      $ref: "#/definitions/DefaultError"
+  401:
+    description: Unauthorized
+    schema:
+      $ref: "#/definitions/DefaultError"
+  403:
+    description: Forbidden
+    schema:
+      $ref: "#/definitions/DefaultError"
+  500:
+    description: Internal Server Error
+    schema:
+      $ref: "#/definitions/DefaultError"
 
 definitions:
   PluDefToChange:
@@ -333,29 +498,81 @@ definitions:
     properties:
       id:
         type: "integer"
+
+  AccountBase:
+    type: "object"
+    properties:
+      required:
+        - name
+      name:
+        type: "string"
+      tag:
+        properties: {}
+
+  AccountCreateUpdate:
+    description: "Account definition"
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      permission:
+        type: string
+        enum:
+          - Read
+          - Write
+          - Admin
+          - SelfRegisterDomain
+      tag:
+        properties: {}
+
+  AccountDefinition:
+    description: "Account definition"
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      permission:
+        type: string
+        enum:
+          - Read
+          - Write
+          - Admin
+          - SelfRegisterDomain
+      tag:
+        properties: {}
+      domains:
+        type: array
+        items:
+          type: string
+      create_date:
+        type: string
+        format: "date-time"
+      last_modification_date:
+        type: string
+        format: "date-time"
+
+  AccountDefinitionList:
+    type: array
+    items:
+      $ref: '#/definitions/AccountDefinition'
+
   DefaultError:
+    type: "object"
+    properties:
+      code:
+        type: "string"
+        enum: 
+          - "AccessDeny"
+          - "InsufficientPermission"
+          - "InvalidInputData"
+        description: "Error code"
+      message:
+        type: "string"
+        description: "Error message details"
+
+  DefaultMessage:
     type: "object"
     properties:
       message:
         type: "string"
-  AccountCreateUpdate:
-    type: "object"
-    properties:
-      name:
-        type: "string"
-      tag:
-        properties: {}
-  AccountDefinition:
-    type: "object"
-    properties:
-      name:
-        type: "string"
-      creationDate:
-        type: "string"
-        format: "date-time"
-      ModificationDate:
-        type: "string"
-        format: "date-time"
-      tag:
-        properties: {}
-
+        description: "Message"
