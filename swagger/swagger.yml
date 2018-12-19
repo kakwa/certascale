@@ -42,6 +42,10 @@ paths:
           schema:
             $ref: '#/definitions/AccountCreateUpdate'
           description: Data structure to create the account
+          x-example:
+            name: "AccountName"
+            tags: {"TagName": "TagValue"}
+            permission: "Read"
       responses:
         '201':
           description: successful operation
