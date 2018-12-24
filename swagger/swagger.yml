@@ -119,12 +119,12 @@ paths:
           name: body
           required: true
           schema:
-            $ref: '#/definitions/PluDefToChange'
+            $ref: '#/definitions/AccountCreateUpdate'
       responses:
         '200':
           description: successful operation
           schema:
-            $ref: '#/definitions/PluDefToChange'
+            $ref: '#/definitions/DefaultMessage'
         '400':
           $ref: '#/responses/400'
         '401':
@@ -147,12 +147,12 @@ paths:
         type: string
     get:
       description: Get the list of API keys for a given account
-      operationId: apikey_get
+      operationId: apikey_list
       responses:
         '200':
           description: successful operation
           schema:
-            $ref: '#/definitions/PluDefToChange'
+            $ref: '#/definitions/ApiKeyList'
         '400':
           $ref: '#/responses/400'
         '401':
@@ -174,7 +174,7 @@ paths:
         '201':
           description: successful operation
           schema:
-            $ref: '#/definitions/PluDefToChange'
+            $ref: '#/definitions/ApiKey'
         '400':
           $ref: '#/responses/400'
         '401':
@@ -195,6 +195,28 @@ paths:
         required: true
         in: path
         type: string
+    get:
+      description: Get a given API key
+      operationId: apikey_get
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/ApiKey'
+        '400':
+          $ref: '#/responses/400'
+        '401':
+          $ref: '#/responses/401'
+        '403':
+          $ref: '#/responses/403'
+        '404':
+          description: Account doesn't exist
+          schema:
+            $ref: '#/definitions/DefaultError'
+        '500':
+          $ref: '#/responses/500'
+      tags:
+        - Account
     delete:
       description: Delete a given key
       operationId: apikey_delete
@@ -343,7 +365,7 @@ paths:
         '200':
           description: successful operation
           schema:
-            $ref: '#/definitions/PluDefToChange'
+            $ref: '#/definitions/CertificateList'
         '400':
           $ref: '#/responses/400'
         '401':
@@ -403,7 +425,7 @@ paths:
         '200':
           description: successful operation
           schema:
-            $ref: '#/definitions/PluDefToChange'
+            $ref: '#/definitions/Certificate'
         '400':
           $ref: '#/responses/400'
         '401':
@@ -425,7 +447,7 @@ paths:
         '200':
           description: successful operation
           schema:
-            $ref: '#/definitions/PluDefToChange'
+            $ref: '#/definitions/DefaultMessage'
         '400':
           $ref: '#/responses/400'
         '401':
@@ -586,6 +608,73 @@ definitions:
     type: array
     items:
       $ref: '#/definitions/AccountDefinition'
+
+  ApiKey:
+    description: Api key object
+    type: object
+    properties:
+      id:
+        type: string
+        description: ID of the key
+      secret:
+        type: string
+        description: key secret (full content at creation, first digits afterward)
+      create_date:
+        type: string
+        format: date-time
+      last_modification_date:
+        type: string
+        format: date-time
+  ApiKeyList:
+    type: array
+    items:
+      $ref: '#/definitions/ApiKey'
+
+  Domain:
+    description: Domain definition
+    type: object
+    properties:
+      name:
+        type: string
+  DomainList:
+    type: array
+    items:
+      $ref: '#/definitions/Domain'
+
+  Certificate:
+    description: Certificate definition
+    type: object
+    properties:
+      domain:
+        type: string
+      ca_name:
+        type: string
+      latest_valide:
+        type: bool
+      public_key:
+        type: string
+      private_key:
+        type: string
+      ca:
+        type: string
+      valid_start:
+        type: string
+        format: date-time
+      valid_end:
+        type: string
+        format: date-time
+      status:
+        type: string
+        enum:
+          - Valid
+          - Expired
+          - ValidInFutur
+          - ToValidate
+  CertificateList:
+    type: array
+    items:
+      $ref: '#/definitions/Certificate'
+
   DefaultError:
     type: object
     properties:
