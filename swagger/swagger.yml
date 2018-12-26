@@ -5,7 +5,7 @@ info:
   description: Certascale API documentation
   license:
     name: MIT
-basePath: /api
+basePath: /api/v1.0
 schemes:
   - http
 consumes:
