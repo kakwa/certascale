@@ -654,6 +654,18 @@ definitions:
     items:
       $ref: '#/definitions/Certificate'
 
+  CertificatePayload:
+    description: Certificate + Key + CA
+    type: object
+    properties:
+      certification:
+        type: string
+      key:
+        type: string
+      ca:
+        type: string
+
+
   Notification:
     description: Notification message
     type: object
@@ -693,16 +705,6 @@ definitions:
       status_message:
         type: string
 
-  CertificatePayload:
-    description: Certificate + Key + CA
-    type: object
-    properties:
-      certification:
-        type: string
-      key:
-        type: string
-      ca:
-        type: string
   DefaultError:
     type: object
     properties:
