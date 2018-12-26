@@ -17,6 +17,10 @@ paths:
     get:
       description: Get the list of accounts (paginated)
       operationId: account_list
+      parameters:
+        - name: next_id
+          in: query
+          type: integer
       responses:
         '200':
           description: successful operation
@@ -120,6 +124,9 @@ paths:
           required: true
           schema:
             $ref: '#/definitions/AccountCreateUpdate'
+          x-example:
+            tags: { 'TagName': 'TagValue'}
+            permission: "Read"
       responses:
         '200':
           description: successful operation
@@ -148,6 +155,10 @@ paths:
     get:
       description: Get the list of API keys for a given account
       operationId: apikey_list
+      parameters:
+        - name: next_id
+          in: query
+          type: integer
       responses:
         '200':
           description: successful operation
@@ -243,6 +254,10 @@ paths:
     get:
       description: Get the list of your domains
       operationId: domain_list
+      parameters:
+        - name: next_id
+          in: query
+          type: integer
       responses:
         '200':
           description: successful operation
@@ -267,6 +282,9 @@ paths:
           required: true
           schema:
             $ref: '#/definitions/DomainCreateUpdate'
+          x-example:
+            name: sub.example.com
+            tag: {'TagName': 'TagValue'}
       responses:
         '201':
           description: successful operation
@@ -333,6 +351,10 @@ paths:
     get:
       description: Get the list of certificate for a specific domain
       operationId: certificate_list
+      parameters:
+        - name: next_id
+          in: query
+          type: integer
       responses:
         '200':
           description: successful operation
@@ -361,6 +383,16 @@ paths:
           required: true
           schema:
             $ref: '#/definitions/CertificatePayload'
+          x-example:
+            ca:
+              "-----BEGIN CERTIFICATE-----
+              -----END CERTIFICATE-----"
+            certificate:
+              "-----BEGIN CERTIFICATE-----
+              -----END CERTIFICATE-----"
+            key:
+              "-----BEGIN PRIVATE KEY-----
+              -----END PRIVATE KEY-----"
       responses:
         '201':
           description: successful operation
@@ -438,6 +470,10 @@ paths:
     get:
       description: Get all your certificate update notifications
       operationId: notification_list
+      parameters:
+        - name: next_id
+          in: query
+          type: integer
       responses:
         '200':
           description: successful operation
@@ -489,7 +525,10 @@ paths:
           name: body
           required: true
           schema:
-            $ref: '#/definitions/NotificationAck'
+            $ref: '#/definitions/NotificationUpdate'
+          x-example:
+            status: Deploying
+            status_message: "The certificate is currently being deployed"
       responses:
         '200':
           description: successful operation
@@ -542,7 +581,8 @@ definitions:
         enum:
           - Read
           - Write
-          - Admin
+          - AdminRead
+          - AdminWrite
           - SelfRegisterDomain
       tag:
         properties: {}
@@ -557,7 +597,8 @@ definitions:
         enum:
           - Read
           - Write
-          - Admin
+          - AdminRead
+          - AdminWrite
           - SelfRegisterDomain
       tag:
         properties: {}
@@ -572,10 +613,12 @@ definitions:
         type: string
         format: date-time
   AccountDefinitionList:
-    type: array
-    items:
-      $ref: '#/definitions/AccountDefinition'
-
+    list:
+      type: array
+      items:
+        $ref: '#/definitions/AccountDefinition'
+    next_id:
+      type: integer
   ApiKey:
     description: Api key object
     type: object
@@ -593,9 +636,12 @@ definitions:
         type: string
         format: date-time
   ApiKeyList:
-    type: array
-    items:
-      $ref: '#/definitions/ApiKey'
+    list:
+      type: array
+      items:
+        $ref: '#/definitions/ApiKey'
+    next_id:
+      type: integer
   Domain:
     description: Domain definition
     type: object
@@ -608,17 +654,27 @@ definitions:
       last_modification_date:
         type: string
         format: date-time
+      tag:
+        properties: {}
+      latest_notification:
+        $ref: '#/definitions/Notification'
+
   DomainCreateUpdate:
     description: Domain definition
     type: object
     properties:
       name:
         type: string
+      tag:
+        properties: {}
 
   DomainList:
-    type: array
-    items:
-      $ref: '#/definitions/Domain'
+    list:
+      type: array
+      items:
+        $ref: '#/definitions/Domain'
+    next_id:
+      type: integer
 
   Certificate:
     description: Certificate definition
@@ -650,9 +706,12 @@ definitions:
           - ValidInFutur
           - ToValidate
   CertificateList:
-    type: array
-    items:
-      $ref: '#/definitions/Certificate'
+    list:
+      type: array
+      items:
+        $ref: '#/definitions/Certificate'
+    next_id:
+      type: integer
 
   CertificatePayload:
     description: Certificate + Key + CA
@@ -664,7 +723,6 @@ definitions:
         type: string
       ca:
         type: string
-
 
   Notification:
     description: Notification message
@@ -686,9 +744,12 @@ definitions:
         type: string
   NotificationList:
     description: List of notifications
-    type: array
-    items:
-      $ref: '#/definitions/Notification'
+    list:
+      type: array
+      items:
+        $ref: '#/definitions/Notification'
+    next_id:
+      type: int
 
   NotificationUpdate:
     description: Notification status update payload
@@ -698,8 +759,9 @@ definitions:
         type: string
         enum:
           - ToSubmit
-          - Submit
-          - ReSubmit
+          - Submitted
+          - ReSubmitted
+          - Error
           - Deploying
           - Deployed
       status_message:
