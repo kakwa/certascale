@@ -224,7 +224,7 @@ paths:
         '200':
           description: successful operation
           schema:
-            $ref: '#/definitions/PluDefToChange'
+            $ref: '#/definitions/DefaultMessage'
         '400':
           $ref: '#/responses/400'
         '401':
@@ -247,7 +247,7 @@ paths:
         '200':
           description: successful operation
           schema:
-            $ref: '#/definitions/PluDefToChange'
+            $ref: '#/definitions/DomainList'
         '400':
           $ref: '#/responses/400'
         '401':
@@ -266,12 +266,12 @@ paths:
           name: body
           required: true
           schema:
-            $ref: '#/definitions/PluDefToChange'
+            $ref: '#/definitions/DomainCreateUpdate'
       responses:
         '201':
           description: successful operation
           schema:
-            $ref: '#/definitions/PluDefToChange'
+            $ref: '#/definitions/Domain'
         '400':
           $ref: '#/responses/400'
         '401':
@@ -295,7 +295,7 @@ paths:
         '200':
           description: successful operation
           schema:
-            $ref: '#/definitions/PluDefToChange'
+            $ref: '#/definitions/Domain'
         '400':
           $ref: '#/responses/400'
         '401':
@@ -313,41 +313,13 @@ paths:
         '200':
           description: successful operation
           schema:
-            $ref: '#/definitions/PluDefToChange'
+            $ref: '#/definitions/DefaultMessage'
         '400':
           $ref: '#/responses/400'
         '401':
           $ref: '#/responses/401'
         '403':
           $ref: '#/responses/403'
-        '500':
-          $ref: '#/responses/500'
-      tags:
-        - Domain
-    put:
-      description: Update an existing domain
-      operationId: domain_update
-      parameters:
-        - in: body
-          name: body
-          required: true
-          schema:
-            $ref: '#/definitions/PluDefToChange'
-      responses:
-        '200':
-          description: successful operation
-          schema:
-            $ref: '#/definitions/PluDefToChange'
-        '400':
-          $ref: '#/responses/400'
-        '401':
-          $ref: '#/responses/401'
-        '403':
-          $ref: '#/responses/403'
-        '404':
-          description: Domain doesn't exist
-          schema:
-            $ref: '#/definitions/DefaultError'
         '500':
           $ref: '#/responses/500'
       tags:
@@ -388,12 +360,12 @@ paths:
           name: body
           required: true
           schema:
-            $ref: '#/definitions/PluDefToChange'
+            $ref: '#/definitions/CertificatePayload'
       responses:
         '201':
           description: successful operation
           schema:
-            $ref: '#/definitions/PluDefToChange'
+            $ref: '#/definitions/DefaultMessage'
         '400':
           $ref: '#/responses/400'
         '401':
@@ -470,7 +442,7 @@ paths:
         '200':
           description: successful operation
           schema:
-            $ref: '#/definitions/PluDefToChange'
+            $ref: '#/definitions/NotificationList'
         '400':
           $ref: '#/responses/400'
         '401':
@@ -494,7 +466,7 @@ paths:
         '200':
           description: successful operation
           schema:
-            $ref: '#/definitions/PluDefToChange'
+            $ref: '#/definitions/Notification'
         '400':
           $ref: '#/responses/400'
         '401':
@@ -517,12 +489,12 @@ paths:
           name: body
           required: true
           schema:
-            $ref: '#/definitions/PluDefToChange'
+            $ref: '#/definitions/NotificationAck'
       responses:
         '200':
           description: successful operation
           schema:
-            $ref: '#/definitions/PluDefToChange'
+            $ref: '#/definitions/DefaultMessage'
         '400':
           $ref: '#/responses/400'
         '401':
@@ -559,11 +531,6 @@ responses:
 
 # Data structure definition
 definitions:
-  PluDefToChange:
-    type: object
-    properties:
-      id:
-        type: integer
   AccountCreateUpdate:
     description: Account definition
     type: object
@@ -629,13 +596,25 @@ definitions:
     type: array
     items:
       $ref: '#/definitions/ApiKey'
-
   Domain:
     description: Domain definition
     type: object
     properties:
       name:
         type: string
+      create_date:
+        type: string
+        format: date-time
+      last_modification_date:
+        type: string
+        format: date-time
+  DomainCreateUpdate:
+    description: Domain definition
+    type: object
+    properties:
+      name:
+        type: string
+
   DomainList:
     type: array
     items:
@@ -675,6 +654,55 @@ definitions:
     items:
       $ref: '#/definitions/Certificate'
 
+  Notification:
+    description: Notification message
+    type: object
+    properties:
+      message:
+        type: string
+      payload:
+        type: object
+      status:
+        type: string
+        enum:
+          - ToSubmit
+          - Submit
+          - ReSubmit
+          - Deploying
+          - Deployed
+      status_message:
+        type: string
+  NotificationList:
+    description: List of notifications
+    type: array
+    items:
+      $ref: '#/definitions/Notification'
+
+  NotificationUpdate:
+    description: Notification status update payload
+    type: object
+    properties:
+      status:
+        type: string
+        enum:
+          - ToSubmit
+          - Submit
+          - ReSubmit
+          - Deploying
+          - Deployed
+      status_message:
+        type: string
+
+  CertificatePayload:
+    description: Certificate + Key + CA
+    type: object
+    properties:
+      certification:
+        type: string
+      key:
+        type: string
+      ca:
+        type: string
   DefaultError:
     type: object
     properties:
