@@ -613,12 +613,14 @@ definitions:
         type: string
         format: date-time
   AccountDefinitionList:
-    list:
-      type: array
-      items:
-        $ref: '#/definitions/AccountDefinition'
-    next_id:
-      type: integer
+    type: object
+    properties:
+      list:
+        type: array
+        items:
+          $ref: '#/definitions/AccountDefinition'
+      next_id:
+        type: integer
 
   ApiKey:
     description: Api key object
@@ -637,12 +639,14 @@ definitions:
         type: string
         format: date-time
   ApiKeyList:
-    list:
-      type: array
-      items:
-        $ref: '#/definitions/ApiKey'
-    next_id:
-      type: integer
+    type: object
+    properties:
+      list:
+        type: array
+        items:
+          $ref: '#/definitions/ApiKey'
+      next_id:
+        type: integer
 
   Domain:
     description: Domain definition
@@ -669,12 +673,14 @@ definitions:
       tag:
         properties: {}
   DomainList:
-    list:
-      type: array
-      items:
-        $ref: '#/definitions/Domain'
-    next_id:
-      type: integer
+    type: object
+    properties:
+      list:
+        type: array
+        items:
+          $ref: '#/definitions/Domain'
+      next_id:
+        type: integer
 
   Certificate:
     description: Certificate definition
@@ -706,12 +712,14 @@ definitions:
           - ValidInFutur
           - ToValidate
   CertificateList:
-    list:
-      type: array
-      items:
-        $ref: '#/definitions/Certificate'
-    next_id:
-      type: integer
+    type: object
+    properties:
+      list:
+        type: array
+        items:
+          $ref: '#/definitions/Certificate'
+      next_id:
+        type: integer
   CertificatePayload:
     description: Certificate + Key + CA
     type: object
@@ -743,12 +751,14 @@ definitions:
         type: string
   NotificationList:
     description: List of notifications
-    list:
-      type: array
-      items:
-        $ref: '#/definitions/Notification'
-    next_id:
-      type: int
+    type: object
+    properties:
+      list:
+        type: array
+        items:
+          $ref: '#/definitions/Notification'
+      next_id:
+        type: integer
 
   NotificationUpdate:
     description: Notification status update payload
