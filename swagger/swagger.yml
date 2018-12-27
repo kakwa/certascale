@@ -8,10 +8,21 @@ info:
 basePath: /api/v1.0
 schemes:
   - http
+  - https
 consumes:
   - application/json
 produces:
   - application/json
+
+securityDefinitions:
+  bearerAuth:
+    type: "apiKey"
+    name: "bearer"
+    in: "header"
+
+security:
+  - bearerAuth: []
+
 paths:
   /account:
     get:
