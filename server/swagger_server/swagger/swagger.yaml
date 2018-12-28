@@ -1,0 +1,1164 @@
+---
+swagger: "2.0"
+info:
+  description: "Certascale API documentation"
+  version: "1.0.0"
+  title: "certascale API"
+  license:
+    name: "MIT"
+basePath: "/api/v1.0"
+schemes:
+- "http"
+- "https"
+consumes:
+- "application/json"
+produces:
+- "application/json"
+security:
+- bearerAuth: []
+paths:
+  /account:
+    get:
+      tags:
+      - "Account"
+      description: "Get the list of accounts (paginated)"
+      operationId: "account_list"
+      parameters:
+      - name: "next_id"
+        in: "query"
+        required: false
+        type: "integer"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/AccountDefinitionList"
+        400:
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        403:
+          description: "Forbidden"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        500:
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/DefaultError"
+      x-swagger-router-controller: "swagger_server.controllers.account_controller"
+    post:
+      tags:
+      - "Account"
+      description: "Create a new account"
+      operationId: "account_create"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Data structure to create the account"
+        required: true
+        schema:
+          $ref: "#/definitions/AccountCreateUpdate"
+        x-example:
+          name: "AccountName"
+          tags:
+            TagName: "TagValue"
+          permission: "Read"
+      responses:
+        201:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/AccountDefinition"
+        400:
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        403:
+          description: "Forbidden"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        500:
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/DefaultError"
+      x-swagger-router-controller: "swagger_server.controllers.account_controller"
+  /account/{accountId}:
+    get:
+      tags:
+      - "Account"
+      description: "Get the details of a specific account"
+      operationId: "account_get"
+      parameters:
+      - name: "accountId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/AccountDefinition"
+        400:
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        403:
+          description: "Forbidden"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        404:
+          description: "Account doesn't exist"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        500:
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/DefaultError"
+      x-swagger-router-controller: "swagger_server.controllers.account_controller"
+    put:
+      tags:
+      - "Account"
+      description: "Update an existing account"
+      operationId: "account_update"
+      parameters:
+      - name: "accountId"
+        in: "path"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/AccountCreateUpdate"
+        x-example:
+          tags:
+            TagName: "TagValue"
+          permission: "Read"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/DefaultMessage"
+        400:
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        403:
+          description: "Forbidden"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        404:
+          description: "Account doesn't exist"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        500:
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/DefaultError"
+      x-swagger-router-controller: "swagger_server.controllers.account_controller"
+    delete:
+      tags:
+      - "Account"
+      description: "Remove the account"
+      operationId: "account_delete"
+      parameters:
+      - name: "accountId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/DefaultMessage"
+        400:
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        403:
+          description: "Forbidden"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        404:
+          description: "Account doesn't exist"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        500:
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/DefaultError"
+      x-swagger-router-controller: "swagger_server.controllers.account_controller"
+  /account/{accountId}/apikey/:
+    get:
+      tags:
+      - "Account"
+      description: "Get the list of API keys for a given account"
+      operationId: "apikey_list"
+      parameters:
+      - name: "accountId"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "next_id"
+        in: "query"
+        required: false
+        type: "integer"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/ApiKeyList"
+        400:
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        403:
+          description: "Forbidden"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        404:
+          description: "Account doesn't exist"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        500:
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/DefaultError"
+      x-swagger-router-controller: "swagger_server.controllers.account_controller"
+    post:
+      tags:
+      - "Account"
+      description: "Create a new API key"
+      operationId: "apikey_create"
+      parameters:
+      - name: "accountId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        201:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/ApiKey"
+        400:
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        403:
+          description: "Forbidden"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        500:
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/DefaultError"
+      x-swagger-router-controller: "swagger_server.controllers.account_controller"
+  /account/{accountId}/apikey/{keyId}:
+    get:
+      tags:
+      - "Account"
+      description: "Get a given API key"
+      operationId: "apikey_get"
+      parameters:
+      - name: "accountId"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "keyId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/ApiKey"
+        400:
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        403:
+          description: "Forbidden"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        404:
+          description: "Account doesn't exist"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        500:
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/DefaultError"
+      x-swagger-router-controller: "swagger_server.controllers.account_controller"
+    delete:
+      tags:
+      - "Account"
+      description: "Delete a given key"
+      operationId: "apikey_delete"
+      parameters:
+      - name: "accountId"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "keyId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/DefaultMessage"
+        400:
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        403:
+          description: "Forbidden"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        404:
+          description: "Account doesn't exist"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        500:
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/DefaultError"
+      x-swagger-router-controller: "swagger_server.controllers.account_controller"
+  /domain:
+    get:
+      tags:
+      - "Domain"
+      description: "Get the list of your domains"
+      operationId: "domain_list"
+      parameters:
+      - name: "next_id"
+        in: "query"
+        required: false
+        type: "integer"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/DomainList"
+        400:
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        403:
+          description: "Forbidden"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        500:
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/DefaultError"
+      x-swagger-router-controller: "swagger_server.controllers.domain_controller"
+    post:
+      tags:
+      - "Domain"
+      description: "Register a new domain"
+      operationId: "domain_create"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/DomainCreateUpdate"
+        x-example:
+          name: "sub.example.com"
+          tag:
+            TagName: "TagValue"
+      responses:
+        201:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Domain"
+        400:
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        403:
+          description: "Forbidden"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        500:
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/DefaultError"
+      x-swagger-router-controller: "swagger_server.controllers.domain_controller"
+  /domain/{domainName}:
+    get:
+      tags:
+      - "Domain"
+      description: "Get the details of a specific domain"
+      operationId: "domain_get"
+      parameters:
+      - name: "domainName"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Domain"
+        400:
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        403:
+          description: "Forbidden"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        500:
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/DefaultError"
+      x-swagger-router-controller: "swagger_server.controllers.domain_controller"
+    delete:
+      tags:
+      - "Domain"
+      description: "Remove the domain"
+      operationId: "domain_delete"
+      parameters:
+      - name: "domainName"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/DefaultMessage"
+        400:
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        403:
+          description: "Forbidden"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        500:
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/DefaultError"
+      x-swagger-router-controller: "swagger_server.controllers.domain_controller"
+  /domain/{domainName}/certificate/:
+    get:
+      tags:
+      - "Domain"
+      description: "Get the list of certificate for a specific domain"
+      operationId: "certificate_list"
+      parameters:
+      - name: "domainName"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "next_id"
+        in: "query"
+        required: false
+        type: "integer"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/CertificateList"
+        400:
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        403:
+          description: "Forbidden"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        404:
+          description: "Domain doesn't exist"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        500:
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/DefaultError"
+      x-swagger-router-controller: "swagger_server.controllers.domain_controller"
+    post:
+      tags:
+      - "Domain"
+      description: "Post an externally generated certificate"
+      operationId: "certificate_create"
+      parameters:
+      - name: "domainName"
+        in: "path"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/CertificatePayload"
+        x-example:
+          ca: "-----BEGIN CERTIFICATE----- -----END CERTIFICATE-----"
+          certificate: "-----BEGIN CERTIFICATE----- -----END CERTIFICATE-----"
+          key: "-----BEGIN PRIVATE KEY----- -----END PRIVATE KEY-----"
+      responses:
+        201:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/DefaultMessage"
+        400:
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        403:
+          description: "Forbidden"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        404:
+          description: "Domain doesn't exist"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        500:
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/DefaultError"
+      x-swagger-router-controller: "swagger_server.controllers.domain_controller"
+  /domain/{domainName}/certificate/{certificateId}:
+    get:
+      tags:
+      - "Domain"
+      description: "Get a specific certificate and the associated key and CA"
+      operationId: "certificate_get"
+      parameters:
+      - name: "domainName"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "certificateId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Certificate"
+        400:
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        403:
+          description: "Forbidden"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        404:
+          description: "Certificate or domain doesn't exist"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        500:
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/DefaultError"
+      x-swagger-router-controller: "swagger_server.controllers.domain_controller"
+    delete:
+      tags:
+      - "Domain"
+      description: "Remove the certificate"
+      operationId: "certificate_delete"
+      parameters:
+      - name: "domainName"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "certificateId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/DefaultMessage"
+        400:
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        403:
+          description: "Forbidden"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        404:
+          description: "Certificate or domain doesn't exist"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        500:
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/DefaultError"
+      x-swagger-router-controller: "swagger_server.controllers.domain_controller"
+  /notification:
+    get:
+      tags:
+      - "Notification"
+      description: "Get all your certificate update notifications"
+      operationId: "notification_list"
+      parameters:
+      - name: "next_id"
+        in: "query"
+        required: false
+        type: "integer"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/NotificationList"
+        400:
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        403:
+          description: "Forbidden"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        500:
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/DefaultError"
+      x-swagger-router-controller: "swagger_server.controllers.notification_controller"
+  /notification/{notificationId}:
+    get:
+      tags:
+      - "Notification"
+      description: "Get specific content for a notification"
+      operationId: "notification_get"
+      parameters:
+      - name: "notificationId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Notification"
+        400:
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        403:
+          description: "Forbidden"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        404:
+          description: "Notification doesn't exist"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        500:
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/DefaultError"
+      x-swagger-router-controller: "swagger_server.controllers.notification_controller"
+    put:
+      tags:
+      - "Notification"
+      description: "Acknowledge the notification"
+      operationId: "notification_acknowledge"
+      parameters:
+      - name: "notificationId"
+        in: "path"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/NotificationUpdate"
+        x-example:
+          status: "Deploying"
+          status_message: "The certificate is currently being deployed"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/DefaultMessage"
+        400:
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        403:
+          description: "Forbidden"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        404:
+          description: "Notification doesn't exist"
+          schema:
+            $ref: "#/definitions/DefaultError"
+        500:
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/DefaultError"
+      x-swagger-router-controller: "swagger_server.controllers.notification_controller"
+securityDefinitions:
+  bearerAuth:
+    type: "apiKey"
+    name: "bearer"
+    in: "header"
+definitions:
+  AccountCreateUpdate:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      permission:
+        type: "string"
+        enum:
+        - "Read"
+        - "Write"
+        - "AdminRead"
+        - "AdminWrite"
+        - "SelfRegisterDomain"
+      tag:
+        type: "object"
+        properties: {}
+    description: "Account definition"
+    example:
+      name: "name"
+      permission: "Read"
+      tag: "{}"
+  AccountDefinition:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      permission:
+        type: "string"
+        enum:
+        - "Read"
+        - "Write"
+        - "AdminRead"
+        - "AdminWrite"
+        - "SelfRegisterDomain"
+      tag:
+        type: "object"
+        properties: {}
+      domains:
+        type: "array"
+        items:
+          type: "string"
+      create_date:
+        type: "string"
+        format: "date-time"
+      last_modification_date:
+        type: "string"
+        format: "date-time"
+    description: "Account definition"
+    example:
+      name: "name"
+      last_modification_date: "2000-01-23T04:56:07.000+00:00"
+      domains:
+      - "domains"
+      - "domains"
+      permission: "Read"
+      tag: "{}"
+      create_date: "2000-01-23T04:56:07.000+00:00"
+  AccountDefinitionList:
+    type: "object"
+    properties:
+      list:
+        type: "array"
+        items:
+          $ref: "#/definitions/AccountDefinition"
+      next_id:
+        type: "integer"
+    example:
+      list:
+      - name: "name"
+        last_modification_date: "2000-01-23T04:56:07.000+00:00"
+        domains:
+        - "domains"
+        - "domains"
+        permission: "Read"
+        tag: "{}"
+        create_date: "2000-01-23T04:56:07.000+00:00"
+      - name: "name"
+        last_modification_date: "2000-01-23T04:56:07.000+00:00"
+        domains:
+        - "domains"
+        - "domains"
+        permission: "Read"
+        tag: "{}"
+        create_date: "2000-01-23T04:56:07.000+00:00"
+      next_id: 0
+  ApiKey:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        description: "ID of the key"
+      secret:
+        type: "string"
+        description: "key secret (full content at creation, first digits afterward)"
+      create_date:
+        type: "string"
+        format: "date-time"
+      last_modification_date:
+        type: "string"
+        format: "date-time"
+    description: "Api key object"
+    example:
+      last_modification_date: "2000-01-23T04:56:07.000+00:00"
+      id: "id"
+      secret: "secret"
+      create_date: "2000-01-23T04:56:07.000+00:00"
+  ApiKeyList:
+    type: "object"
+    properties:
+      list:
+        type: "array"
+        items:
+          $ref: "#/definitions/ApiKey"
+      next_id:
+        type: "integer"
+    example:
+      list:
+      - last_modification_date: "2000-01-23T04:56:07.000+00:00"
+        id: "id"
+        secret: "secret"
+        create_date: "2000-01-23T04:56:07.000+00:00"
+      - last_modification_date: "2000-01-23T04:56:07.000+00:00"
+        id: "id"
+        secret: "secret"
+        create_date: "2000-01-23T04:56:07.000+00:00"
+      next_id: 0
+  Domain:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      create_date:
+        type: "string"
+        format: "date-time"
+      last_modification_date:
+        type: "string"
+        format: "date-time"
+      tag:
+        type: "object"
+        properties: {}
+      latest_notification:
+        $ref: "#/definitions/Notification"
+    description: "Domain definition"
+    example:
+      latest_notification:
+        status_message: "status_message"
+        payload: "{}"
+        message: "message"
+        status: "ToSubmit"
+      name: "name"
+      last_modification_date: "2000-01-23T04:56:07.000+00:00"
+      tag: "{}"
+      create_date: "2000-01-23T04:56:07.000+00:00"
+  DomainCreateUpdate:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      tag:
+        type: "object"
+        properties: {}
+    description: "Domain definition"
+    example:
+      name: "name"
+      tag: "{}"
+  DomainList:
+    type: "object"
+    properties:
+      list:
+        type: "array"
+        items:
+          $ref: "#/definitions/Domain"
+      next_id:
+        type: "integer"
+    example:
+      list:
+      - latest_notification:
+          status_message: "status_message"
+          payload: "{}"
+          message: "message"
+          status: "ToSubmit"
+        name: "name"
+        last_modification_date: "2000-01-23T04:56:07.000+00:00"
+        tag: "{}"
+        create_date: "2000-01-23T04:56:07.000+00:00"
+      - latest_notification:
+          status_message: "status_message"
+          payload: "{}"
+          message: "message"
+          status: "ToSubmit"
+        name: "name"
+        last_modification_date: "2000-01-23T04:56:07.000+00:00"
+        tag: "{}"
+        create_date: "2000-01-23T04:56:07.000+00:00"
+      next_id: 0
+  Certificate:
+    type: "object"
+    properties:
+      domain:
+        type: "string"
+      ca_name:
+        type: "string"
+      latest_valid:
+        type: "boolean"
+      public_key:
+        type: "string"
+      private_key:
+        type: "string"
+      ca:
+        type: "string"
+      valid_start:
+        type: "string"
+        format: "date-time"
+      valid_end:
+        type: "string"
+        format: "date-time"
+      status:
+        type: "string"
+        enum:
+        - "Valid"
+        - "Expired"
+        - "ValidInFutur"
+        - "ToValidate"
+    description: "Certificate definition"
+    example:
+      public_key: "public_key"
+      valid_end: "2000-01-23T04:56:07.000+00:00"
+      ca_name: "ca_name"
+      valid_start: "2000-01-23T04:56:07.000+00:00"
+      domain: "domain"
+      latest_valid: true
+      private_key: "private_key"
+      ca: "ca"
+      status: "Valid"
+  CertificateList:
+    type: "object"
+    properties:
+      list:
+        type: "array"
+        items:
+          $ref: "#/definitions/Certificate"
+      next_id:
+        type: "integer"
+    example:
+      list:
+      - public_key: "public_key"
+        valid_end: "2000-01-23T04:56:07.000+00:00"
+        ca_name: "ca_name"
+        valid_start: "2000-01-23T04:56:07.000+00:00"
+        domain: "domain"
+        latest_valid: true
+        private_key: "private_key"
+        ca: "ca"
+        status: "Valid"
+      - public_key: "public_key"
+        valid_end: "2000-01-23T04:56:07.000+00:00"
+        ca_name: "ca_name"
+        valid_start: "2000-01-23T04:56:07.000+00:00"
+        domain: "domain"
+        latest_valid: true
+        private_key: "private_key"
+        ca: "ca"
+        status: "Valid"
+      next_id: 0
+  CertificatePayload:
+    type: "object"
+    properties:
+      certification:
+        type: "string"
+      key:
+        type: "string"
+      ca:
+        type: "string"
+    description: "Certificate + Key + CA"
+    example:
+      key: "key"
+      ca: "ca"
+      certification: "certification"
+  Notification:
+    type: "object"
+    properties:
+      message:
+        type: "string"
+      payload:
+        type: "object"
+        properties: {}
+      status:
+        type: "string"
+        enum:
+        - "ToSubmit"
+        - "Submit"
+        - "ReSubmit"
+        - "Deploying"
+        - "Deployed"
+      status_message:
+        type: "string"
+    description: "Notification message"
+    example:
+      status_message: "status_message"
+      payload: "{}"
+      message: "message"
+      status: "ToSubmit"
+  NotificationList:
+    type: "object"
+    properties:
+      list:
+        type: "array"
+        items:
+          $ref: "#/definitions/Notification"
+      next_id:
+        type: "integer"
+    description: "List of notifications"
+    example:
+      list:
+      - status_message: "status_message"
+        payload: "{}"
+        message: "message"
+        status: "ToSubmit"
+      - status_message: "status_message"
+        payload: "{}"
+        message: "message"
+        status: "ToSubmit"
+      next_id: 0
+  NotificationUpdate:
+    type: "object"
+    properties:
+      status:
+        type: "string"
+        enum:
+        - "ToSubmit"
+        - "Submitted"
+        - "ReSubmitted"
+        - "Error"
+        - "Deploying"
+        - "Deployed"
+      status_message:
+        type: "string"
+    description: "Notification status update payload"
+    example:
+      status_message: "status_message"
+      status: "ToSubmit"
+  DefaultError:
+    type: "object"
+    properties:
+      code:
+        type: "string"
+        description: "Error code"
+        enum:
+        - "AccessDeny"
+        - "InsufficientPermission"
+        - "InvalidInputData"
+      message:
+        type: "string"
+        description: "Error message details"
+  DefaultMessage:
+    type: "object"
+    properties:
+      message:
+        type: "string"
+        description: "Message"
+    example:
+      message: "message"
+responses:
+  400:
+    description: "Bad Request"
+    schema:
+      $ref: "#/definitions/DefaultError"
+  401:
+    description: "Unauthorized"
+    schema:
+      $ref: "#/definitions/DefaultError"
+  403:
+    description: "Forbidden"
+    schema:
+      $ref: "#/definitions/DefaultError"
+  500:
+    description: "Internal Server Error"
+    schema:
+      $ref: "#/definitions/DefaultError"
