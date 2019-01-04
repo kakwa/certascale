@@ -10,6 +10,7 @@ from swagger_server.models.default_error import DefaultError  # noqa: E501
 from swagger_server.models.default_message import DefaultMessage  # noqa: E501
 from swagger_server import util
 
+import builtins
 
 def account_create(body):  # noqa: E501
     """account_create
@@ -62,6 +63,7 @@ def account_list(next_id=None):  # noqa: E501
 
     :rtype: AccountDefinitionList
     """
+    builtins.CAS_CONTEXT['logger'].info('listing the events')
     return 'do some magic!'
 
 

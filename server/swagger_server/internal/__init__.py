@@ -23,6 +23,12 @@ import sys
 import time
 import signal
 
+import db
+
+# we use builtins to share a global variable named CAS_CONTEXT
+# I'm going to burn in hell for all eternity for that one
+# but I was not able to find another solution...
+import builtins
 
 
 '''
@@ -259,6 +265,7 @@ def launch(config, debug):
     app = connexion.App(__name__, specification_dir=path, options={"swagger_ui": True})
     app.app.json_encoder = encoder.JSONEncoder
     app.add_api('swagger.yaml', arguments={'title': 'certascale API'}, strict_validation=True)
+    cas_db = db.get_dbpool(config['db'])
 
     # run it in the application in gevent wsgi server
     http_server = WSGIServer(
