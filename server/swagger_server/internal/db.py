@@ -67,6 +67,7 @@ def get_dbpool(config):
             Version(vtype = VERSION_LABEL, version = VERSION),
         ])
         session.commit()
+        version = session.query(Version).filter_by(vtype=DB_VERSION_LABEL).first()
 
     # the version of the DB is newer than the version of certascale
     # this should not happen so we raise an exception
