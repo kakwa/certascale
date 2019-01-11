@@ -257,6 +257,7 @@ class Daemon(object):
 
 def launch(config, debug):
     loggers = cas_logging.get_loggers(config, debug)
+
     # recover the path to the swagger specification
     path = os.path.dirname(encoder.__file__)
     path = os.path.join(path, 'swagger')
@@ -265,7 +266,8 @@ def launch(config, debug):
     app = connexion.App(__name__, specification_dir=path, options={"swagger_ui": True})
     app.app.json_encoder = encoder.JSONEncoder
     app.add_api('swagger.yaml', arguments={'title': 'certascale API'}, strict_validation=True)
-    cas_db = db.get_dbpool(config['db'])
+    cas_db = db.get_dbsession(config['db'])
+    builtins.CAS_CONTEXT = {'logger': loggers['app'], 'app': app, 'db_session': cas_db, 'config': config}
 
     # run it in the application in gevent wsgi server
     http_server = WSGIServer(

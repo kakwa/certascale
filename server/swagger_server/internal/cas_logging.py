@@ -86,4 +86,3 @@ def get_loggers(config, debug):
         logger = get_logger(loglvl, log_types, 'certascale-' + t)
         loggers[t] = logger
     return loggers
-
