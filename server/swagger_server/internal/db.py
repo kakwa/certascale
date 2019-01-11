@@ -106,7 +106,7 @@ class Version(Base):
     vtype = Column(String(10), nullable=False, unique=True)
 
 
-def get_dbpool(config):
+def get_dbsession(config):
 
     engine = create_engine(
             config['uri'],
@@ -127,7 +127,8 @@ def get_dbpool(config):
         # setting the version is necessary on postgres
         session.commit()
         # we set the version
-        while True:
+        counter = 0
+        while counter < 10:
             try:
                 session.add_all([
                     Version(vtype = DB_VERSION_LABEL, version = DB_VERSION),
@@ -137,7 +138,8 @@ def get_dbpool(config):
                 version = session.query(Version).filter_by(vtype=DB_VERSION_LABEL).first()
                 break
             except:
-                pass
+                counter += 1
+                time.sleep(1)
 
     # the version of the DB is newer than the version of certascale
     # this should not happen so we raise an exception
@@ -150,3 +152,4 @@ def get_dbpool(config):
     # so we launch the schema update script
     elif int(version.version) < int(DB_VERSION):
         migrate()
+    return Session
