@@ -10,6 +10,9 @@ from swagger_server.models.default_error import DefaultError  # noqa: E501
 from swagger_server.models.default_message import DefaultMessage  # noqa: E501
 from swagger_server import util
 
+
+import swagger_server.internal.calls as calls
+
 import builtins
 
 def account_create(body):  # noqa: E501
@@ -24,7 +27,7 @@ def account_create(body):  # noqa: E501
     """
     if connexion.request.is_json:
         body = AccountCreateUpdate.from_dict(connexion.request.get_json())  # noqa: E501
-    return 'do some magic! DONE'
+    return calls._account_create(body)
 
 
 def account_delete(accountId):  # noqa: E501
@@ -37,7 +40,7 @@ def account_delete(accountId):  # noqa: E501
 
     :rtype: DefaultMessage
     """
-    return 'do some magic!'
+    return calls._account_delete(accountId)
 
 
 def account_get(accountId):  # noqa: E501
@@ -50,7 +53,7 @@ def account_get(accountId):  # noqa: E501
 
     :rtype: AccountDefinition
     """
-    return 'do some magic!'
+    return calls._account_get(accountId)
 
 
 def account_list(next_id=None):  # noqa: E501

@@ -27,24 +27,32 @@ def migrate():
 
 class Account(Base):
     __tablename__ = 'account'
-    id = Column(Integer, primary_key=True)
-    tags = relationship("TagAccount")
-    name = Column(String(30), unique=True)
-    permission = Column(String(30))
-    creation_date = Column(DateTime())
-    last_modification_date = Column(DateTime())
+
+    # definition of the fields
+    id = Column(Integer, primary_key=True, nullable=False)
+    name = Column(String(30), unique=True, nullable=False)
+    permission = Column(String(30), nullable=False)
+    creation_date = Column(DateTime(), nullable=False)
+    last_modification_date = Column(DateTime(), nullable=False)
+
+    # relationships
     api_keys = relationship("ApiKey")
     domains = relationship("Domain")
-    notifications = relationship("Notification")
+    notifications = relationship("Notification", cascade="all, delete, delete-orphan", backref="account")
+    tags = relationship("TagAccount")
 
 
 class ApiKey(Base):
     __tablename__ = 'api_key'
-    id = Column(Integer, primary_key=True)
-    secrete = Column(String(256))
-    creation_date = Column(DateTime())
-    last_modification_date = Column(DateTime())
-    account_id = Column(Integer, ForeignKey('account.id'))
+
+    # fields
+    id = Column(Integer, primary_key=True, nullable=False)
+    secrete = Column(String(256), nullable=False)
+    creation_date = Column(DateTime(), nullable=False)
+    last_modification_date = Column(DateTime(), nullable=False)
+
+    # foreign keys
+    account_id = Column(Integer, ForeignKey('account.id'), nullable=False)
 
 
 class Domain(Base):
@@ -88,7 +96,7 @@ class TagAccount(Base):
     id = Column(Integer, primary_key=True)
     key = Column(String(30))
     value = Column(String(30))
-    account_id = Column(Integer, ForeignKey('account.id'))
+    account_id = Column(Integer, ForeignKey('account.id'), nullable=False)
 
 
 class TagDomain(Base):

@@ -1,13 +1,98 @@
+import builtins
+import datetime
+from db import *
+
+from swagger_server.models.default_error import DefaultError
+from swagger_server.models.default_message import DefaultMessage
+from swagger_server.models.account_definition import AccountDefinition
+
+def _render_account(db_account):
+    tags = {}
+    for tag in db_account.tags:
+        tags[tag.key] = tag.value
+    return AccountDefinition(
+        name=db_account.name,
+        permission=db_account.permission,
+        tag=tags,
+        domains=db_account.domains,
+        create_date=db_account.creation_date,
+        last_modification_date=db_account.last_modification_date,
+    )
+
 def _account_create(body):
-    pass
+    session = builtins.CAS_CONTEXT['db_session']()
+    name = body.name
+    permission = body.permission
+
+    try:
+        new_account = Account(
+                name=name,
+                permission=permission,
+                creation_date=datetime.datetime.now(),
+                last_modification_date=datetime.datetime.now()
+        )
+        session.add(new_account)
+        session.flush()
+        session.refresh(new_account)
+
+    except sqlalchemy.exc.IntegrityError as e:
+        # loss matching of not unique account name
+        if 'unique' not in str(e) or 'UNIQUE' not in str(e):
+            log_msg = 'Duplicate account name, account "%s" already exists' % name
+        else:
+            log_msg = 'Invalid/incomplete data in the payload'
+        #log_msg = str(e)
+        builtins.CAS_CONTEXT['logger'].info(log_msg)
+        return DefaultError(code='InvalidInputData', message=log_msg), 400
+
+    for tag in body.tag:
+        tag = TagAccount(key=tag, value=body.tag[tag], account_id=new_account.id)
+        session.add(tag)
+
+    session.commit()
+    session.refresh(new_account)
+
+    ret = _render_account(new_account)
+    session.close()
+    return ret 
 
 def _account_delete(accountId):
-    pass
+    session = builtins.CAS_CONTEXT['db_session']()
+    account = session.query(Account).filter_by(name=accountId).first()
+    # TODO handle cascading or error messages when certificates/domains/notifications are
+    # still present 
+    if account is not None:
+        for tag in account.tags:
+            session.delete(tag)
+        session.query(Account).filter_by(name=accountId).delete()
+        log_msg = "user '%s' deleted" % accountId
+        builtins.CAS_CONTEXT['logger'].info(log_msg)
+        ret = DefaultMessage(message=log_msg)
+        ret_code = 200
+    else:
+        log_msg = "user '%s' doesn't exist, nothing to be done" % accountId
+        builtins.CAS_CONTEXT['logger'].info(log_msg)
+        ret = DefaultError(message=log_msg)
+        ret_code = 404
+
+    session.commit()
+    session.close()
+    return ret , ret_code
 
 def _account_get(accountId):
-    pass
+    session = builtins.CAS_CONTEXT['db_session']()
+    account = session.query(Account).filter_by(name=accountId).first()
+    ret = _render_account(account)
+    session.close()
+    if ret is None:
+        log_msg = 'Account "%s" doesn\'t exist' % accountId
+        builtins.CAS_CONTEXT['logger'].warning(log_msg)
+        return DefaultError(code='InvalidInputData', message=log_msg), 404
+    return ret
 
 def _account_list(next_id=None):
+    session = builtins.CAS_CONTEXT['db_session']()
+    account = session.query(Account).filter_by(name=accountId).first()
     pass
 
 def _account_update(accountId, body):
