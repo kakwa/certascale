@@ -48,9 +48,10 @@ def _account_create(body):
         builtins.CAS_CONTEXT['logger'].info(log_msg)
         return DefaultError(code='InvalidInputData', message=log_msg), 400
 
-    for tag in body.tag:
-        tag = TagAccount(key=tag, value=body.tag[tag], account_id=new_account.id)
-        session.add(tag)
+    if body.tag is not None:
+        for tag in body.tag:
+            tag = TagAccount(key=tag, value=body.tag[tag], account_id=new_account.id)
+            session.add(tag)
 
     session.commit()
     session.refresh(new_account)
@@ -87,6 +88,7 @@ def _account_get(accountId):
     account = session.query(Account).filter_by(name=accountId).first()
     if account is None:
         log_msg = "user '%s' doesn't exist" % accountId
+        session.close()
         return DefaultError(message=log_msg), 404
     ret = _render_account(account)
     session.close()
@@ -113,10 +115,31 @@ def _account_list(next_id=None):
     ret = AccountDefinitionList()
     ret.list = rendered_accounts
     ret.next_id = next_id
+    session.close()
     return ret
 
 def _account_update(accountId, body):
-    pass
+    session = builtins.CAS_CONTEXT['db_session']()
+    account = session.query(Account).filter_by(name=accountId).first()
+    if account is None:
+        log_msg = "user '%s' doesn't exist" % accountId
+        return DefaultError(message=log_msg), 404
+    if body.name:
+        account.name = body.name
+    if body.permission:
+        account.permission = body.permission
+    if account.tags is not None:
+        for tag in account.tags:
+            session.delete(tag)
+    account.last_modification_date = datetime.datetime.now()
+    for tag in body.tag:
+        tag = TagAccount(key=tag, value=body.tag[tag], account_id=account.id)
+        session.add(tag)
+    session.commit()
+    session.refresh(account)
+    ret = _render_account(account)
+    session.close()
+    return ret
 
 def _apikey_create(accountId):
     pass

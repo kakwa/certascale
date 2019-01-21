@@ -83,7 +83,7 @@ def account_update(accountId, body):  # noqa: E501
     """
     if connexion.request.is_json:
         body = AccountCreateUpdate.from_dict(connexion.request.get_json())  # noqa: E501
-    return 'do some magic!'
+    return calls._account_update(accountId, body)
 
 
 def apikey_create(accountId):  # noqa: E501
