@@ -66,8 +66,7 @@ def account_list(next_id=None):  # noqa: E501
 
     :rtype: AccountDefinitionList
     """
-    builtins.CAS_CONTEXT['logger'].info('listing the events')
-    return 'do some magic!'
+    return calls._account_list(next_id)
 
 
 def account_update(accountId, body):  # noqa: E501

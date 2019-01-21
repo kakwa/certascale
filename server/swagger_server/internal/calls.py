@@ -5,6 +5,9 @@ from db import *
 from swagger_server.models.default_error import DefaultError
 from swagger_server.models.default_message import DefaultMessage
 from swagger_server.models.account_definition import AccountDefinition
+from swagger_server.models.account_definition_list import AccountDefinitionList
+
+PAGING_SIZE = 30
 
 def _render_account(db_account):
     tags = {}
@@ -82,6 +85,9 @@ def _account_delete(accountId):
 def _account_get(accountId):
     session = builtins.CAS_CONTEXT['db_session']()
     account = session.query(Account).filter_by(name=accountId).first()
+    if account is None:
+        log_msg = "user '%s' doesn't exist" % accountId
+        return DefaultError(message=log_msg), 404
     ret = _render_account(account)
     session.close()
     if ret is None:
@@ -91,9 +97,23 @@ def _account_get(accountId):
     return ret
 
 def _account_list(next_id=None):
+    if next_id is None:
+        next_id = 0
     session = builtins.CAS_CONTEXT['db_session']()
-    account = session.query(Account).filter_by(name=accountId).first()
-    pass
+    accounts = session.query(Account).filter(Account.id > next_id).order_by(Account.id).limit(PAGING_SIZE)
+    rendered_accounts = []
+    for account in accounts:
+        rendered_accounts.append(_render_account(account))
+    if len(rendered_accounts) == PAGING_SIZE:
+        next_id = account.id
+    elif len(rendered_accounts) == 0:
+        next_id = None
+    else:
+        next_id = None
+    ret = AccountDefinitionList()
+    ret.list = rendered_accounts
+    ret.next_id = next_id
+    return ret
 
 def _account_update(accountId, body):
     pass
