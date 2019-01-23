@@ -35,7 +35,7 @@ def account_delete(accountId):  # noqa: E501
 
     Remove the account # noqa: E501
 
-    :param accountId: 
+    :param accountId:
     :type accountId: str
 
     :rtype: DefaultMessage
@@ -48,7 +48,7 @@ def account_get(accountId):  # noqa: E501
 
     Get the details of a specific account # noqa: E501
 
-    :param accountId: 
+    :param accountId:
     :type accountId: str
 
     :rtype: AccountDefinition
@@ -61,7 +61,7 @@ def account_list(next_id=None):  # noqa: E501
 
     Get the list of accounts (paginated) # noqa: E501
 
-    :param next_id: 
+    :param next_id:
     :type next_id: int
 
     :rtype: AccountDefinitionList
@@ -74,9 +74,9 @@ def account_update(accountId, body):  # noqa: E501
 
     Update an existing account # noqa: E501
 
-    :param accountId: 
+    :param accountId:
     :type accountId: str
-    :param body: 
+    :param body:
     :type body: dict | bytes
 
     :rtype: DefaultMessage
@@ -91,12 +91,12 @@ def apikey_create(accountId):  # noqa: E501
 
     Create a new API key # noqa: E501
 
-    :param accountId: 
+    :param accountId:
     :type accountId: str
 
     :rtype: ApiKey
     """
-    return 'do some magic!'
+    return calls._apikey_create(accountId)
 
 
 def apikey_delete(accountId, keyId):  # noqa: E501
@@ -104,14 +104,14 @@ def apikey_delete(accountId, keyId):  # noqa: E501
 
     Delete a given key # noqa: E501
 
-    :param accountId: 
+    :param accountId:
     :type accountId: str
-    :param keyId: 
+    :param keyId:
     :type keyId: str
 
     :rtype: DefaultMessage
     """
-    return 'do some magic!'
+    return calls._apikey_delete(accountId, keyId)
 
 
 def apikey_get(accountId, keyId):  # noqa: E501
@@ -119,14 +119,14 @@ def apikey_get(accountId, keyId):  # noqa: E501
 
     Get a given API key # noqa: E501
 
-    :param accountId: 
+    :param accountId:
     :type accountId: str
-    :param keyId: 
+    :param keyId:
     :type keyId: str
 
     :rtype: ApiKey
     """
-    return 'do some magic!'
+    return calls._apikey_get(accountId, keyId)
 
 
 def apikey_list(accountId, next_id=None):  # noqa: E501
@@ -134,11 +134,11 @@ def apikey_list(accountId, next_id=None):  # noqa: E501
 
     Get the list of API keys for a given account # noqa: E501
 
-    :param accountId: 
+    :param accountId:
     :type accountId: str
-    :param next_id: 
+    :param next_id:
     :type next_id: int
 
     :rtype: ApiKeyList
     """
-    return 'do some magic!'
+    return calls._apikey_list(accountId, next_id)

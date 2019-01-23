@@ -25,7 +25,7 @@ def migrate():
     """Place holder for futur DB migration scripts"""
     pass
 
-class Account(Base):
+class DbAccount(Base):
     __tablename__ = 'account'
 
     # definition of the fields
@@ -36,37 +36,38 @@ class Account(Base):
     last_modification_date = Column(DateTime(), nullable=False)
 
     # relationships
-    api_keys = relationship("ApiKey")
-    domains = relationship("Domain")
-    notifications = relationship("Notification", cascade="all, delete, delete-orphan", backref="account")
-    tags = relationship("TagAccount")
+    api_keys = relationship("DbApiKey")
+    domains = relationship("DbDomain")
+    notifications = relationship("DbNotification", cascade="all, delete, delete-orphan", backref="account")
+    tags = relationship("DbTagAccount")
 
 
-class ApiKey(Base):
+class DbApiKey(Base):
     __tablename__ = 'api_key'
 
     # fields
     id = Column(Integer, primary_key=True, nullable=False)
-    secrete = Column(String(256), nullable=False)
+    secret_hash = Column(String(1024), nullable=False)
     creation_date = Column(DateTime(), nullable=False)
-    last_modification_date = Column(DateTime(), nullable=False)
+    last_modification_date = Column(DateTime())
+    secret_prefix = Column(String(8), nullable=False)
 
     # foreign keys
     account_id = Column(Integer, ForeignKey('account.id'), nullable=False)
 
 
-class Domain(Base):
+class DbDomain(Base):
     __tablename__ = 'domain'
     id = Column(Integer, primary_key=True)
     name = Column(String(256), unique=True)
     creation_date = Column(DateTime())
     last_modification_date = Column(DateTime())
     account_id = Column(Integer, ForeignKey('account.id'))
-    notifications = relationship("Notification")
-    tags = relationship("TagDomain")
+    notifications = relationship("DbNotification")
+    tags = relationship("DbTagDomain")
 
 
-class Certificate(Base):
+class DbCertificate(Base):
     __tablename__ = 'certificate'
     id = Column(Integer, primary_key=True)
     valid_start = Column(DateTime())
@@ -80,7 +81,7 @@ class Certificate(Base):
     domain_id = Column(Integer, ForeignKey('domain.id'))
 
 
-class Notification(Base):
+class DbNotification(Base):
     __tablename__ = 'notification'
     id = Column(Integer, primary_key=True)
     message = Column(String(256))
@@ -91,7 +92,7 @@ class Notification(Base):
     account_id = Column(Integer, ForeignKey('account.id'))
 
 
-class TagAccount(Base):
+class DbTagAccount(Base):
     __tablename__ = 'tagaccount'
     id = Column(Integer, primary_key=True)
     key = Column(String(30))
@@ -99,7 +100,7 @@ class TagAccount(Base):
     account_id = Column(Integer, ForeignKey('account.id'), nullable=False)
 
 
-class TagDomain(Base):
+class DbTagDomain(Base):
     __tablename__ = 'tagdomain'
     id = Column(Integer, primary_key=True)
     key = Column(String(30))
@@ -107,7 +108,7 @@ class TagDomain(Base):
     account_id = Column(Integer, ForeignKey('domain.id'))
 
 
-class Version(Base):
+class DbVersion(Base):
     __tablename__ = 'version'
     id = Column(Integer, primary_key=True)
     version = Column(String(10))
@@ -128,7 +129,7 @@ def get_dbsession(config):
 
     # we try to get the version, if it doesn't succeed, we create the DB
     try:
-        version = session.query(Version).filter_by(vtype=DB_VERSION_LABEL).first()
+        version = session.query(DbVersion).filter_by(vtype=DB_VERSION_LABEL).first()
     except (sqlalchemy.exc.OperationalError, sqlalchemy.exc.ProgrammingError):
         Base.metadata.create_all(engine)
         # committing between schema creation and
@@ -139,11 +140,11 @@ def get_dbsession(config):
         while counter < 10:
             try:
                 session.add_all([
-                    Version(vtype = DB_VERSION_LABEL, version = DB_VERSION),
-                    Version(vtype = VERSION_LABEL, version = VERSION),
+                    DbVersion(vtype = DB_VERSION_LABEL, version = DB_VERSION),
+                    DbVersion(vtype = VERSION_LABEL, version = VERSION),
                 ])
                 session.commit()
-                version = session.query(Version).filter_by(vtype=DB_VERSION_LABEL).first()
+                version = session.query(DbVersion).filter_by(vtype=DB_VERSION_LABEL).first()
                 break
             except:
                 counter += 1
