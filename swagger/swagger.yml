@@ -17,7 +17,7 @@ produces:
 securityDefinitions:
   bearerAuth:
     type: "apiKey"
-    name: "bearer"
+    name: "X-API-KEY"
     in: "header"
 
 security:

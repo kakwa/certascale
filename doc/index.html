@@ -1113,7 +1113,7 @@ margin-bottom: 20px;
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Account-accountCreate-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X POST -H "bearer: [[apiKey]]" "http://localhost/api/v1.0/account"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X POST -H "X-API-KEY: [[apiKey]]" "http://localhost/api/v1.0/account"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Account-accountCreate-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -1186,9 +1186,9 @@ public class AccountApiExample {
                               <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
 
 // Configure API key authorization: (authentication scheme: bearerAuth)
-[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"bearer"];
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-API-KEY"];
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"bearer"];
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-API-KEY"];
 
 AccountCreateUpdate *body = {
   "name" : "AccountName",
@@ -1220,7 +1220,7 @@ var defaultClient = CertascaleApi.ApiClient.instance;
 var bearerAuth = defaultClient.authentications['bearerAuth'];
 bearerAuth.apiKey = "YOUR API KEY"
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//bearerAuth.apiKeyPrefix['bearer'] = "Token"
+//bearerAuth.apiKeyPrefix['X-API-KEY'] = "Token"
 
 var api = new CertascaleApi.AccountApi()
 
@@ -1262,9 +1262,9 @@ namespace Example
         {
             
             // Configure API key authorization: bearerAuth
-            Configuration.Default.ApiKey.Add("bearer", "YOUR_API_KEY");
+            Configuration.Default.ApiKey.Add("X-API-KEY", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.ApiKeyPrefix.Add("bearer", "Bearer");
+            // Configuration.Default.ApiKeyPrefix.Add("X-API-KEY", "Bearer");
 
             var apiInstance = new AccountApi();
             var body = new AccountCreateUpdate(); // AccountCreateUpdate | Data structure to create the account
@@ -1289,9 +1289,9 @@ namespace Example
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: bearerAuth
-Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('bearer', 'YOUR_API_KEY');
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-KEY', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('bearer', 'Bearer');
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-KEY', 'Bearer');
 
 $api_instance = new Swagger\Client\Api\AccountApi();
 $body = {
@@ -1317,9 +1317,9 @@ use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::AccountApi;
 
 # Configure API key authorization: bearerAuth
-$WWW::SwaggerClient::Configuration::api_key->{'bearer'} = 'YOUR_API_KEY';
+$WWW::SwaggerClient::Configuration::api_key->{'X-API-KEY'} = 'YOUR_API_KEY';
 # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-#$WWW::SwaggerClient::Configuration::api_key_prefix->{'bearer'} = "Bearer";
+#$WWW::SwaggerClient::Configuration::api_key_prefix->{'X-API-KEY'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::AccountApi->new();
 my $body = WWW::SwaggerClient::Object::AccountCreateUpdate->new(); # AccountCreateUpdate | Data structure to create the account
@@ -1341,9 +1341,9 @@ from swagger_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-swagger_client.configuration.api_key['bearer'] = 'YOUR_API_KEY'
+swagger_client.configuration.api_key['X-API-KEY'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# swagger_client.configuration.api_key_prefix['bearer'] = 'Bearer'
+# swagger_client.configuration.api_key_prefix['X-API-KEY'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = swagger_client.AccountApi()
@@ -1670,7 +1670,7 @@ $(document).ready(function() {
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Account-accountDelete-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X DELETE -H "bearer: [[apiKey]]" "http://localhost/api/v1.0/account/{accountId}"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X DELETE -H "X-API-KEY: [[apiKey]]" "http://localhost/api/v1.0/account/{accountId}"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Account-accountDelete-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -1731,9 +1731,9 @@ public class AccountApiExample {
                               <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
 
 // Configure API key authorization: (authentication scheme: bearerAuth)
-[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"bearer"];
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-API-KEY"];
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"bearer"];
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-API-KEY"];
 
 String *accountId = accountId_example; // 
 
@@ -1759,7 +1759,7 @@ var defaultClient = CertascaleApi.ApiClient.instance;
 var bearerAuth = defaultClient.authentications['bearerAuth'];
 bearerAuth.apiKey = "YOUR API KEY"
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//bearerAuth.apiKeyPrefix['bearer'] = "Token"
+//bearerAuth.apiKeyPrefix['X-API-KEY'] = "Token"
 
 var api = new CertascaleApi.AccountApi()
 
@@ -1795,9 +1795,9 @@ namespace Example
         {
             
             // Configure API key authorization: bearerAuth
-            Configuration.Default.ApiKey.Add("bearer", "YOUR_API_KEY");
+            Configuration.Default.ApiKey.Add("X-API-KEY", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.ApiKeyPrefix.Add("bearer", "Bearer");
+            // Configuration.Default.ApiKeyPrefix.Add("X-API-KEY", "Bearer");
 
             var apiInstance = new AccountApi();
             var accountId = accountId_example;  // String | 
@@ -1822,9 +1822,9 @@ namespace Example
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: bearerAuth
-Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('bearer', 'YOUR_API_KEY');
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-KEY', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('bearer', 'Bearer');
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-KEY', 'Bearer');
 
 $api_instance = new Swagger\Client\Api\AccountApi();
 $accountId = accountId_example; // String | 
@@ -1844,9 +1844,9 @@ use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::AccountApi;
 
 # Configure API key authorization: bearerAuth
-$WWW::SwaggerClient::Configuration::api_key->{'bearer'} = 'YOUR_API_KEY';
+$WWW::SwaggerClient::Configuration::api_key->{'X-API-KEY'} = 'YOUR_API_KEY';
 # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-#$WWW::SwaggerClient::Configuration::api_key_prefix->{'bearer'} = "Bearer";
+#$WWW::SwaggerClient::Configuration::api_key_prefix->{'X-API-KEY'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::AccountApi->new();
 my $accountId = accountId_example; # String | 
@@ -1868,9 +1868,9 @@ from swagger_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-swagger_client.configuration.api_key['bearer'] = 'YOUR_API_KEY'
+swagger_client.configuration.api_key['X-API-KEY'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# swagger_client.configuration.api_key_prefix['bearer'] = 'Bearer'
+# swagger_client.configuration.api_key_prefix['X-API-KEY'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = swagger_client.AccountApi()
@@ -2212,7 +2212,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Account-accountGet-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET -H "bearer: [[apiKey]]" "http://localhost/api/v1.0/account/{accountId}"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET -H "X-API-KEY: [[apiKey]]" "http://localhost/api/v1.0/account/{accountId}"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Account-accountGet-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -2273,9 +2273,9 @@ public class AccountApiExample {
                               <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
 
 // Configure API key authorization: (authentication scheme: bearerAuth)
-[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"bearer"];
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-API-KEY"];
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"bearer"];
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-API-KEY"];
 
 String *accountId = accountId_example; // 
 
@@ -2301,7 +2301,7 @@ var defaultClient = CertascaleApi.ApiClient.instance;
 var bearerAuth = defaultClient.authentications['bearerAuth'];
 bearerAuth.apiKey = "YOUR API KEY"
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//bearerAuth.apiKeyPrefix['bearer'] = "Token"
+//bearerAuth.apiKeyPrefix['X-API-KEY'] = "Token"
 
 var api = new CertascaleApi.AccountApi()
 
@@ -2337,9 +2337,9 @@ namespace Example
         {
             
             // Configure API key authorization: bearerAuth
-            Configuration.Default.ApiKey.Add("bearer", "YOUR_API_KEY");
+            Configuration.Default.ApiKey.Add("X-API-KEY", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.ApiKeyPrefix.Add("bearer", "Bearer");
+            // Configuration.Default.ApiKeyPrefix.Add("X-API-KEY", "Bearer");
 
             var apiInstance = new AccountApi();
             var accountId = accountId_example;  // String | 
@@ -2364,9 +2364,9 @@ namespace Example
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: bearerAuth
-Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('bearer', 'YOUR_API_KEY');
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-KEY', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('bearer', 'Bearer');
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-KEY', 'Bearer');
 
 $api_instance = new Swagger\Client\Api\AccountApi();
 $accountId = accountId_example; // String | 
@@ -2386,9 +2386,9 @@ use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::AccountApi;
 
 # Configure API key authorization: bearerAuth
-$WWW::SwaggerClient::Configuration::api_key->{'bearer'} = 'YOUR_API_KEY';
+$WWW::SwaggerClient::Configuration::api_key->{'X-API-KEY'} = 'YOUR_API_KEY';
 # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-#$WWW::SwaggerClient::Configuration::api_key_prefix->{'bearer'} = "Bearer";
+#$WWW::SwaggerClient::Configuration::api_key_prefix->{'X-API-KEY'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::AccountApi->new();
 my $accountId = accountId_example; # String | 
@@ -2410,9 +2410,9 @@ from swagger_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-swagger_client.configuration.api_key['bearer'] = 'YOUR_API_KEY'
+swagger_client.configuration.api_key['X-API-KEY'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# swagger_client.configuration.api_key_prefix['bearer'] = 'Bearer'
+# swagger_client.configuration.api_key_prefix['X-API-KEY'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = swagger_client.AccountApi()
@@ -2754,7 +2754,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Account-accountList-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET -H "bearer: [[apiKey]]" "http://localhost/api/v1.0/account?next_id="</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET -H "X-API-KEY: [[apiKey]]" "http://localhost/api/v1.0/account?next_id="</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Account-accountList-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -2815,9 +2815,9 @@ public class AccountApiExample {
                               <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
 
 // Configure API key authorization: (authentication scheme: bearerAuth)
-[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"bearer"];
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-API-KEY"];
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"bearer"];
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-API-KEY"];
 
 Integer *nextId = 56; //  (optional)
 
@@ -2843,7 +2843,7 @@ var defaultClient = CertascaleApi.ApiClient.instance;
 var bearerAuth = defaultClient.authentications['bearerAuth'];
 bearerAuth.apiKey = "YOUR API KEY"
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//bearerAuth.apiKeyPrefix['bearer'] = "Token"
+//bearerAuth.apiKeyPrefix['X-API-KEY'] = "Token"
 
 var api = new CertascaleApi.AccountApi()
 
@@ -2880,9 +2880,9 @@ namespace Example
         {
             
             // Configure API key authorization: bearerAuth
-            Configuration.Default.ApiKey.Add("bearer", "YOUR_API_KEY");
+            Configuration.Default.ApiKey.Add("X-API-KEY", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.ApiKeyPrefix.Add("bearer", "Bearer");
+            // Configuration.Default.ApiKeyPrefix.Add("X-API-KEY", "Bearer");
 
             var apiInstance = new AccountApi();
             var nextId = 56;  // Integer |  (optional) 
@@ -2907,9 +2907,9 @@ namespace Example
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: bearerAuth
-Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('bearer', 'YOUR_API_KEY');
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-KEY', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('bearer', 'Bearer');
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-KEY', 'Bearer');
 
 $api_instance = new Swagger\Client\Api\AccountApi();
 $nextId = 56; // Integer | 
@@ -2929,9 +2929,9 @@ use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::AccountApi;
 
 # Configure API key authorization: bearerAuth
-$WWW::SwaggerClient::Configuration::api_key->{'bearer'} = 'YOUR_API_KEY';
+$WWW::SwaggerClient::Configuration::api_key->{'X-API-KEY'} = 'YOUR_API_KEY';
 # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-#$WWW::SwaggerClient::Configuration::api_key_prefix->{'bearer'} = "Bearer";
+#$WWW::SwaggerClient::Configuration::api_key_prefix->{'X-API-KEY'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::AccountApi->new();
 my $nextId = 56; # Integer | 
@@ -2953,9 +2953,9 @@ from swagger_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-swagger_client.configuration.api_key['bearer'] = 'YOUR_API_KEY'
+swagger_client.configuration.api_key['X-API-KEY'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# swagger_client.configuration.api_key_prefix['bearer'] = 'Bearer'
+# swagger_client.configuration.api_key_prefix['X-API-KEY'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = swagger_client.AccountApi()
@@ -3251,7 +3251,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Account-accountUpdate-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X PUT -H "bearer: [[apiKey]]" "http://localhost/api/v1.0/account/{accountId}"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X PUT -H "X-API-KEY: [[apiKey]]" "http://localhost/api/v1.0/account/{accountId}"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Account-accountUpdate-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -3324,9 +3324,9 @@ public class AccountApiExample {
                               <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
 
 // Configure API key authorization: (authentication scheme: bearerAuth)
-[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"bearer"];
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-API-KEY"];
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"bearer"];
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-API-KEY"];
 
 String *accountId = accountId_example; // 
 AccountCreateUpdate *body = {
@@ -3359,7 +3359,7 @@ var defaultClient = CertascaleApi.ApiClient.instance;
 var bearerAuth = defaultClient.authentications['bearerAuth'];
 bearerAuth.apiKey = "YOUR API KEY"
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//bearerAuth.apiKeyPrefix['bearer'] = "Token"
+//bearerAuth.apiKeyPrefix['X-API-KEY'] = "Token"
 
 var api = new CertascaleApi.AccountApi()
 
@@ -3402,9 +3402,9 @@ namespace Example
         {
             
             // Configure API key authorization: bearerAuth
-            Configuration.Default.ApiKey.Add("bearer", "YOUR_API_KEY");
+            Configuration.Default.ApiKey.Add("X-API-KEY", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.ApiKeyPrefix.Add("bearer", "Bearer");
+            // Configuration.Default.ApiKeyPrefix.Add("X-API-KEY", "Bearer");
 
             var apiInstance = new AccountApi();
             var accountId = accountId_example;  // String | 
@@ -3430,9 +3430,9 @@ namespace Example
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: bearerAuth
-Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('bearer', 'YOUR_API_KEY');
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-KEY', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('bearer', 'Bearer');
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-KEY', 'Bearer');
 
 $api_instance = new Swagger\Client\Api\AccountApi();
 $accountId = accountId_example; // String | 
@@ -3458,9 +3458,9 @@ use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::AccountApi;
 
 # Configure API key authorization: bearerAuth
-$WWW::SwaggerClient::Configuration::api_key->{'bearer'} = 'YOUR_API_KEY';
+$WWW::SwaggerClient::Configuration::api_key->{'X-API-KEY'} = 'YOUR_API_KEY';
 # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-#$WWW::SwaggerClient::Configuration::api_key_prefix->{'bearer'} = "Bearer";
+#$WWW::SwaggerClient::Configuration::api_key_prefix->{'X-API-KEY'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::AccountApi->new();
 my $accountId = accountId_example; # String | 
@@ -3483,9 +3483,9 @@ from swagger_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-swagger_client.configuration.api_key['bearer'] = 'YOUR_API_KEY'
+swagger_client.configuration.api_key['X-API-KEY'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# swagger_client.configuration.api_key_prefix['bearer'] = 'Bearer'
+# swagger_client.configuration.api_key_prefix['X-API-KEY'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = swagger_client.AccountApi()
@@ -3880,7 +3880,7 @@ $(document).ready(function() {
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Account-apikeyCreate-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X POST -H "bearer: [[apiKey]]" "http://localhost/api/v1.0/account/{accountId}/apikey/"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X POST -H "X-API-KEY: [[apiKey]]" "http://localhost/api/v1.0/account/{accountId}/apikey/"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Account-apikeyCreate-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -3941,9 +3941,9 @@ public class AccountApiExample {
                               <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
 
 // Configure API key authorization: (authentication scheme: bearerAuth)
-[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"bearer"];
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-API-KEY"];
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"bearer"];
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-API-KEY"];
 
 String *accountId = accountId_example; // 
 
@@ -3969,7 +3969,7 @@ var defaultClient = CertascaleApi.ApiClient.instance;
 var bearerAuth = defaultClient.authentications['bearerAuth'];
 bearerAuth.apiKey = "YOUR API KEY"
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//bearerAuth.apiKeyPrefix['bearer'] = "Token"
+//bearerAuth.apiKeyPrefix['X-API-KEY'] = "Token"
 
 var api = new CertascaleApi.AccountApi()
 
@@ -4005,9 +4005,9 @@ namespace Example
         {
             
             // Configure API key authorization: bearerAuth
-            Configuration.Default.ApiKey.Add("bearer", "YOUR_API_KEY");
+            Configuration.Default.ApiKey.Add("X-API-KEY", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.ApiKeyPrefix.Add("bearer", "Bearer");
+            // Configuration.Default.ApiKeyPrefix.Add("X-API-KEY", "Bearer");
 
             var apiInstance = new AccountApi();
             var accountId = accountId_example;  // String | 
@@ -4032,9 +4032,9 @@ namespace Example
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: bearerAuth
-Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('bearer', 'YOUR_API_KEY');
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-KEY', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('bearer', 'Bearer');
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-KEY', 'Bearer');
 
 $api_instance = new Swagger\Client\Api\AccountApi();
 $accountId = accountId_example; // String | 
@@ -4054,9 +4054,9 @@ use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::AccountApi;
 
 # Configure API key authorization: bearerAuth
-$WWW::SwaggerClient::Configuration::api_key->{'bearer'} = 'YOUR_API_KEY';
+$WWW::SwaggerClient::Configuration::api_key->{'X-API-KEY'} = 'YOUR_API_KEY';
 # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-#$WWW::SwaggerClient::Configuration::api_key_prefix->{'bearer'} = "Bearer";
+#$WWW::SwaggerClient::Configuration::api_key_prefix->{'X-API-KEY'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::AccountApi->new();
 my $accountId = accountId_example; # String | 
@@ -4078,9 +4078,9 @@ from swagger_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-swagger_client.configuration.api_key['bearer'] = 'YOUR_API_KEY'
+swagger_client.configuration.api_key['X-API-KEY'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# swagger_client.configuration.api_key_prefix['bearer'] = 'Bearer'
+# swagger_client.configuration.api_key_prefix['X-API-KEY'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = swagger_client.AccountApi()
@@ -4379,7 +4379,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Account-apikeyDelete-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X DELETE -H "bearer: [[apiKey]]" "http://localhost/api/v1.0/account/{accountId}/apikey/{keyId}"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X DELETE -H "X-API-KEY: [[apiKey]]" "http://localhost/api/v1.0/account/{accountId}/apikey/{keyId}"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Account-apikeyDelete-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -4442,9 +4442,9 @@ public class AccountApiExample {
                               <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
 
 // Configure API key authorization: (authentication scheme: bearerAuth)
-[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"bearer"];
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-API-KEY"];
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"bearer"];
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-API-KEY"];
 
 String *accountId = accountId_example; // 
 String *keyId = keyId_example; // 
@@ -4472,7 +4472,7 @@ var defaultClient = CertascaleApi.ApiClient.instance;
 var bearerAuth = defaultClient.authentications['bearerAuth'];
 bearerAuth.apiKey = "YOUR API KEY"
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//bearerAuth.apiKeyPrefix['bearer'] = "Token"
+//bearerAuth.apiKeyPrefix['X-API-KEY'] = "Token"
 
 var api = new CertascaleApi.AccountApi()
 
@@ -4510,9 +4510,9 @@ namespace Example
         {
             
             // Configure API key authorization: bearerAuth
-            Configuration.Default.ApiKey.Add("bearer", "YOUR_API_KEY");
+            Configuration.Default.ApiKey.Add("X-API-KEY", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.ApiKeyPrefix.Add("bearer", "Bearer");
+            // Configuration.Default.ApiKeyPrefix.Add("X-API-KEY", "Bearer");
 
             var apiInstance = new AccountApi();
             var accountId = accountId_example;  // String | 
@@ -4538,9 +4538,9 @@ namespace Example
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: bearerAuth
-Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('bearer', 'YOUR_API_KEY');
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-KEY', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('bearer', 'Bearer');
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-KEY', 'Bearer');
 
 $api_instance = new Swagger\Client\Api\AccountApi();
 $accountId = accountId_example; // String | 
@@ -4561,9 +4561,9 @@ use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::AccountApi;
 
 # Configure API key authorization: bearerAuth
-$WWW::SwaggerClient::Configuration::api_key->{'bearer'} = 'YOUR_API_KEY';
+$WWW::SwaggerClient::Configuration::api_key->{'X-API-KEY'} = 'YOUR_API_KEY';
 # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-#$WWW::SwaggerClient::Configuration::api_key_prefix->{'bearer'} = "Bearer";
+#$WWW::SwaggerClient::Configuration::api_key_prefix->{'X-API-KEY'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::AccountApi->new();
 my $accountId = accountId_example; # String | 
@@ -4586,9 +4586,9 @@ from swagger_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-swagger_client.configuration.api_key['bearer'] = 'YOUR_API_KEY'
+swagger_client.configuration.api_key['X-API-KEY'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# swagger_client.configuration.api_key_prefix['bearer'] = 'Bearer'
+# swagger_client.configuration.api_key_prefix['X-API-KEY'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = swagger_client.AccountApi()
@@ -4951,7 +4951,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Account-apikeyGet-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET -H "bearer: [[apiKey]]" "http://localhost/api/v1.0/account/{accountId}/apikey/{keyId}"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET -H "X-API-KEY: [[apiKey]]" "http://localhost/api/v1.0/account/{accountId}/apikey/{keyId}"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Account-apikeyGet-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -5014,9 +5014,9 @@ public class AccountApiExample {
                               <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
 
 // Configure API key authorization: (authentication scheme: bearerAuth)
-[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"bearer"];
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-API-KEY"];
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"bearer"];
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-API-KEY"];
 
 String *accountId = accountId_example; // 
 String *keyId = keyId_example; // 
@@ -5044,7 +5044,7 @@ var defaultClient = CertascaleApi.ApiClient.instance;
 var bearerAuth = defaultClient.authentications['bearerAuth'];
 bearerAuth.apiKey = "YOUR API KEY"
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//bearerAuth.apiKeyPrefix['bearer'] = "Token"
+//bearerAuth.apiKeyPrefix['X-API-KEY'] = "Token"
 
 var api = new CertascaleApi.AccountApi()
 
@@ -5082,9 +5082,9 @@ namespace Example
         {
             
             // Configure API key authorization: bearerAuth
-            Configuration.Default.ApiKey.Add("bearer", "YOUR_API_KEY");
+            Configuration.Default.ApiKey.Add("X-API-KEY", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.ApiKeyPrefix.Add("bearer", "Bearer");
+            // Configuration.Default.ApiKeyPrefix.Add("X-API-KEY", "Bearer");
 
             var apiInstance = new AccountApi();
             var accountId = accountId_example;  // String | 
@@ -5110,9 +5110,9 @@ namespace Example
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: bearerAuth
-Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('bearer', 'YOUR_API_KEY');
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-KEY', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('bearer', 'Bearer');
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-KEY', 'Bearer');
 
 $api_instance = new Swagger\Client\Api\AccountApi();
 $accountId = accountId_example; // String | 
@@ -5133,9 +5133,9 @@ use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::AccountApi;
 
 # Configure API key authorization: bearerAuth
-$WWW::SwaggerClient::Configuration::api_key->{'bearer'} = 'YOUR_API_KEY';
+$WWW::SwaggerClient::Configuration::api_key->{'X-API-KEY'} = 'YOUR_API_KEY';
 # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-#$WWW::SwaggerClient::Configuration::api_key_prefix->{'bearer'} = "Bearer";
+#$WWW::SwaggerClient::Configuration::api_key_prefix->{'X-API-KEY'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::AccountApi->new();
 my $accountId = accountId_example; # String | 
@@ -5158,9 +5158,9 @@ from swagger_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-swagger_client.configuration.api_key['bearer'] = 'YOUR_API_KEY'
+swagger_client.configuration.api_key['X-API-KEY'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# swagger_client.configuration.api_key_prefix['bearer'] = 'Bearer'
+# swagger_client.configuration.api_key_prefix['X-API-KEY'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = swagger_client.AccountApi()
@@ -5523,7 +5523,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Account-apikeyList-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET -H "bearer: [[apiKey]]" "http://localhost/api/v1.0/account/{accountId}/apikey/?next_id="</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET -H "X-API-KEY: [[apiKey]]" "http://localhost/api/v1.0/account/{accountId}/apikey/?next_id="</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Account-apikeyList-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -5586,9 +5586,9 @@ public class AccountApiExample {
                               <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
 
 // Configure API key authorization: (authentication scheme: bearerAuth)
-[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"bearer"];
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-API-KEY"];
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"bearer"];
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-API-KEY"];
 
 String *accountId = accountId_example; // 
 Integer *nextId = 56; //  (optional)
@@ -5616,7 +5616,7 @@ var defaultClient = CertascaleApi.ApiClient.instance;
 var bearerAuth = defaultClient.authentications['bearerAuth'];
 bearerAuth.apiKey = "YOUR API KEY"
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//bearerAuth.apiKeyPrefix['bearer'] = "Token"
+//bearerAuth.apiKeyPrefix['X-API-KEY'] = "Token"
 
 var api = new CertascaleApi.AccountApi()
 
@@ -5655,9 +5655,9 @@ namespace Example
         {
             
             // Configure API key authorization: bearerAuth
-            Configuration.Default.ApiKey.Add("bearer", "YOUR_API_KEY");
+            Configuration.Default.ApiKey.Add("X-API-KEY", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.ApiKeyPrefix.Add("bearer", "Bearer");
+            // Configuration.Default.ApiKeyPrefix.Add("X-API-KEY", "Bearer");
 
             var apiInstance = new AccountApi();
             var accountId = accountId_example;  // String | 
@@ -5683,9 +5683,9 @@ namespace Example
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: bearerAuth
-Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('bearer', 'YOUR_API_KEY');
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-KEY', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('bearer', 'Bearer');
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-KEY', 'Bearer');
 
 $api_instance = new Swagger\Client\Api\AccountApi();
 $accountId = accountId_example; // String | 
@@ -5706,9 +5706,9 @@ use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::AccountApi;
 
 # Configure API key authorization: bearerAuth
-$WWW::SwaggerClient::Configuration::api_key->{'bearer'} = 'YOUR_API_KEY';
+$WWW::SwaggerClient::Configuration::api_key->{'X-API-KEY'} = 'YOUR_API_KEY';
 # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-#$WWW::SwaggerClient::Configuration::api_key_prefix->{'bearer'} = "Bearer";
+#$WWW::SwaggerClient::Configuration::api_key_prefix->{'X-API-KEY'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::AccountApi->new();
 my $accountId = accountId_example; # String | 
@@ -5731,9 +5731,9 @@ from swagger_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-swagger_client.configuration.api_key['bearer'] = 'YOUR_API_KEY'
+swagger_client.configuration.api_key['X-API-KEY'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# swagger_client.configuration.api_key_prefix['bearer'] = 'Bearer'
+# swagger_client.configuration.api_key_prefix['X-API-KEY'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = swagger_client.AccountApi()
@@ -6103,7 +6103,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Domain-certificateCreate-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X POST -H "bearer: [[apiKey]]" "http://localhost/api/v1.0/domain/{domainName}/certificate/"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X POST -H "X-API-KEY: [[apiKey]]" "http://localhost/api/v1.0/domain/{domainName}/certificate/"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Domain-certificateCreate-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -6174,9 +6174,9 @@ public class DomainApiExample {
                               <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
 
 // Configure API key authorization: (authentication scheme: bearerAuth)
-[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"bearer"];
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-API-KEY"];
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"bearer"];
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-API-KEY"];
 
 String *domainName = domainName_example; // 
 CertificatePayload *body = {
@@ -6208,7 +6208,7 @@ var defaultClient = CertascaleApi.ApiClient.instance;
 var bearerAuth = defaultClient.authentications['bearerAuth'];
 bearerAuth.apiKey = "YOUR API KEY"
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//bearerAuth.apiKeyPrefix['bearer'] = "Token"
+//bearerAuth.apiKeyPrefix['X-API-KEY'] = "Token"
 
 var api = new CertascaleApi.DomainApi()
 
@@ -6250,9 +6250,9 @@ namespace Example
         {
             
             // Configure API key authorization: bearerAuth
-            Configuration.Default.ApiKey.Add("bearer", "YOUR_API_KEY");
+            Configuration.Default.ApiKey.Add("X-API-KEY", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.ApiKeyPrefix.Add("bearer", "Bearer");
+            // Configuration.Default.ApiKeyPrefix.Add("X-API-KEY", "Bearer");
 
             var apiInstance = new DomainApi();
             var domainName = domainName_example;  // String | 
@@ -6278,9 +6278,9 @@ namespace Example
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: bearerAuth
-Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('bearer', 'YOUR_API_KEY');
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-KEY', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('bearer', 'Bearer');
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-KEY', 'Bearer');
 
 $api_instance = new Swagger\Client\Api\DomainApi();
 $domainName = domainName_example; // String | 
@@ -6305,9 +6305,9 @@ use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::DomainApi;
 
 # Configure API key authorization: bearerAuth
-$WWW::SwaggerClient::Configuration::api_key->{'bearer'} = 'YOUR_API_KEY';
+$WWW::SwaggerClient::Configuration::api_key->{'X-API-KEY'} = 'YOUR_API_KEY';
 # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-#$WWW::SwaggerClient::Configuration::api_key_prefix->{'bearer'} = "Bearer";
+#$WWW::SwaggerClient::Configuration::api_key_prefix->{'X-API-KEY'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::DomainApi->new();
 my $domainName = domainName_example; # String | 
@@ -6330,9 +6330,9 @@ from swagger_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-swagger_client.configuration.api_key['bearer'] = 'YOUR_API_KEY'
+swagger_client.configuration.api_key['X-API-KEY'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# swagger_client.configuration.api_key_prefix['bearer'] = 'Bearer'
+# swagger_client.configuration.api_key_prefix['X-API-KEY'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = swagger_client.DomainApi()
@@ -6725,7 +6725,7 @@ $(document).ready(function() {
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Domain-certificateDelete-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X DELETE -H "bearer: [[apiKey]]" "http://localhost/api/v1.0/domain/{domainName}/certificate/{certificateId}"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X DELETE -H "X-API-KEY: [[apiKey]]" "http://localhost/api/v1.0/domain/{domainName}/certificate/{certificateId}"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Domain-certificateDelete-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -6788,9 +6788,9 @@ public class DomainApiExample {
                               <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
 
 // Configure API key authorization: (authentication scheme: bearerAuth)
-[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"bearer"];
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-API-KEY"];
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"bearer"];
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-API-KEY"];
 
 String *domainName = domainName_example; // 
 String *certificateId = certificateId_example; // 
@@ -6818,7 +6818,7 @@ var defaultClient = CertascaleApi.ApiClient.instance;
 var bearerAuth = defaultClient.authentications['bearerAuth'];
 bearerAuth.apiKey = "YOUR API KEY"
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//bearerAuth.apiKeyPrefix['bearer'] = "Token"
+//bearerAuth.apiKeyPrefix['X-API-KEY'] = "Token"
 
 var api = new CertascaleApi.DomainApi()
 
@@ -6856,9 +6856,9 @@ namespace Example
         {
             
             // Configure API key authorization: bearerAuth
-            Configuration.Default.ApiKey.Add("bearer", "YOUR_API_KEY");
+            Configuration.Default.ApiKey.Add("X-API-KEY", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.ApiKeyPrefix.Add("bearer", "Bearer");
+            // Configuration.Default.ApiKeyPrefix.Add("X-API-KEY", "Bearer");
 
             var apiInstance = new DomainApi();
             var domainName = domainName_example;  // String | 
@@ -6884,9 +6884,9 @@ namespace Example
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: bearerAuth
-Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('bearer', 'YOUR_API_KEY');
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-KEY', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('bearer', 'Bearer');
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-KEY', 'Bearer');
 
 $api_instance = new Swagger\Client\Api\DomainApi();
 $domainName = domainName_example; // String | 
@@ -6907,9 +6907,9 @@ use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::DomainApi;
 
 # Configure API key authorization: bearerAuth
-$WWW::SwaggerClient::Configuration::api_key->{'bearer'} = 'YOUR_API_KEY';
+$WWW::SwaggerClient::Configuration::api_key->{'X-API-KEY'} = 'YOUR_API_KEY';
 # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-#$WWW::SwaggerClient::Configuration::api_key_prefix->{'bearer'} = "Bearer";
+#$WWW::SwaggerClient::Configuration::api_key_prefix->{'X-API-KEY'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::DomainApi->new();
 my $domainName = domainName_example; # String | 
@@ -6932,9 +6932,9 @@ from swagger_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-swagger_client.configuration.api_key['bearer'] = 'YOUR_API_KEY'
+swagger_client.configuration.api_key['X-API-KEY'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# swagger_client.configuration.api_key_prefix['bearer'] = 'Bearer'
+# swagger_client.configuration.api_key_prefix['X-API-KEY'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = swagger_client.DomainApi()
@@ -7297,7 +7297,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Domain-certificateGet-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET -H "bearer: [[apiKey]]" "http://localhost/api/v1.0/domain/{domainName}/certificate/{certificateId}"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET -H "X-API-KEY: [[apiKey]]" "http://localhost/api/v1.0/domain/{domainName}/certificate/{certificateId}"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Domain-certificateGet-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -7360,9 +7360,9 @@ public class DomainApiExample {
                               <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
 
 // Configure API key authorization: (authentication scheme: bearerAuth)
-[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"bearer"];
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-API-KEY"];
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"bearer"];
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-API-KEY"];
 
 String *domainName = domainName_example; // 
 String *certificateId = certificateId_example; // 
@@ -7390,7 +7390,7 @@ var defaultClient = CertascaleApi.ApiClient.instance;
 var bearerAuth = defaultClient.authentications['bearerAuth'];
 bearerAuth.apiKey = "YOUR API KEY"
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//bearerAuth.apiKeyPrefix['bearer'] = "Token"
+//bearerAuth.apiKeyPrefix['X-API-KEY'] = "Token"
 
 var api = new CertascaleApi.DomainApi()
 
@@ -7428,9 +7428,9 @@ namespace Example
         {
             
             // Configure API key authorization: bearerAuth
-            Configuration.Default.ApiKey.Add("bearer", "YOUR_API_KEY");
+            Configuration.Default.ApiKey.Add("X-API-KEY", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.ApiKeyPrefix.Add("bearer", "Bearer");
+            // Configuration.Default.ApiKeyPrefix.Add("X-API-KEY", "Bearer");
 
             var apiInstance = new DomainApi();
             var domainName = domainName_example;  // String | 
@@ -7456,9 +7456,9 @@ namespace Example
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: bearerAuth
-Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('bearer', 'YOUR_API_KEY');
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-KEY', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('bearer', 'Bearer');
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-KEY', 'Bearer');
 
 $api_instance = new Swagger\Client\Api\DomainApi();
 $domainName = domainName_example; // String | 
@@ -7479,9 +7479,9 @@ use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::DomainApi;
 
 # Configure API key authorization: bearerAuth
-$WWW::SwaggerClient::Configuration::api_key->{'bearer'} = 'YOUR_API_KEY';
+$WWW::SwaggerClient::Configuration::api_key->{'X-API-KEY'} = 'YOUR_API_KEY';
 # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-#$WWW::SwaggerClient::Configuration::api_key_prefix->{'bearer'} = "Bearer";
+#$WWW::SwaggerClient::Configuration::api_key_prefix->{'X-API-KEY'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::DomainApi->new();
 my $domainName = domainName_example; # String | 
@@ -7504,9 +7504,9 @@ from swagger_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-swagger_client.configuration.api_key['bearer'] = 'YOUR_API_KEY'
+swagger_client.configuration.api_key['X-API-KEY'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# swagger_client.configuration.api_key_prefix['bearer'] = 'Bearer'
+# swagger_client.configuration.api_key_prefix['X-API-KEY'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = swagger_client.DomainApi()
@@ -7869,7 +7869,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Domain-certificateList-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET -H "bearer: [[apiKey]]" "http://localhost/api/v1.0/domain/{domainName}/certificate/?next_id="</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET -H "X-API-KEY: [[apiKey]]" "http://localhost/api/v1.0/domain/{domainName}/certificate/?next_id="</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Domain-certificateList-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -7932,9 +7932,9 @@ public class DomainApiExample {
                               <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
 
 // Configure API key authorization: (authentication scheme: bearerAuth)
-[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"bearer"];
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-API-KEY"];
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"bearer"];
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-API-KEY"];
 
 String *domainName = domainName_example; // 
 Integer *nextId = 56; //  (optional)
@@ -7962,7 +7962,7 @@ var defaultClient = CertascaleApi.ApiClient.instance;
 var bearerAuth = defaultClient.authentications['bearerAuth'];
 bearerAuth.apiKey = "YOUR API KEY"
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//bearerAuth.apiKeyPrefix['bearer'] = "Token"
+//bearerAuth.apiKeyPrefix['X-API-KEY'] = "Token"
 
 var api = new CertascaleApi.DomainApi()
 
@@ -8001,9 +8001,9 @@ namespace Example
         {
             
             // Configure API key authorization: bearerAuth
-            Configuration.Default.ApiKey.Add("bearer", "YOUR_API_KEY");
+            Configuration.Default.ApiKey.Add("X-API-KEY", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.ApiKeyPrefix.Add("bearer", "Bearer");
+            // Configuration.Default.ApiKeyPrefix.Add("X-API-KEY", "Bearer");
 
             var apiInstance = new DomainApi();
             var domainName = domainName_example;  // String | 
@@ -8029,9 +8029,9 @@ namespace Example
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: bearerAuth
-Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('bearer', 'YOUR_API_KEY');
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-KEY', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('bearer', 'Bearer');
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-KEY', 'Bearer');
 
 $api_instance = new Swagger\Client\Api\DomainApi();
 $domainName = domainName_example; // String | 
@@ -8052,9 +8052,9 @@ use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::DomainApi;
 
 # Configure API key authorization: bearerAuth
-$WWW::SwaggerClient::Configuration::api_key->{'bearer'} = 'YOUR_API_KEY';
+$WWW::SwaggerClient::Configuration::api_key->{'X-API-KEY'} = 'YOUR_API_KEY';
 # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-#$WWW::SwaggerClient::Configuration::api_key_prefix->{'bearer'} = "Bearer";
+#$WWW::SwaggerClient::Configuration::api_key_prefix->{'X-API-KEY'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::DomainApi->new();
 my $domainName = domainName_example; # String | 
@@ -8077,9 +8077,9 @@ from swagger_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-swagger_client.configuration.api_key['bearer'] = 'YOUR_API_KEY'
+swagger_client.configuration.api_key['X-API-KEY'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# swagger_client.configuration.api_key_prefix['bearer'] = 'Bearer'
+# swagger_client.configuration.api_key_prefix['X-API-KEY'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = swagger_client.DomainApi()
@@ -8446,7 +8446,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Domain-domainCreate-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X POST -H "bearer: [[apiKey]]" "http://localhost/api/v1.0/domain"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X POST -H "X-API-KEY: [[apiKey]]" "http://localhost/api/v1.0/domain"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Domain-domainCreate-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -8517,9 +8517,9 @@ public class DomainApiExample {
                               <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
 
 // Configure API key authorization: (authentication scheme: bearerAuth)
-[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"bearer"];
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-API-KEY"];
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"bearer"];
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-API-KEY"];
 
 DomainCreateUpdate *body = {
   "name" : "sub.example.com",
@@ -8550,7 +8550,7 @@ var defaultClient = CertascaleApi.ApiClient.instance;
 var bearerAuth = defaultClient.authentications['bearerAuth'];
 bearerAuth.apiKey = "YOUR API KEY"
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//bearerAuth.apiKeyPrefix['bearer'] = "Token"
+//bearerAuth.apiKeyPrefix['X-API-KEY'] = "Token"
 
 var api = new CertascaleApi.DomainApi()
 
@@ -8591,9 +8591,9 @@ namespace Example
         {
             
             // Configure API key authorization: bearerAuth
-            Configuration.Default.ApiKey.Add("bearer", "YOUR_API_KEY");
+            Configuration.Default.ApiKey.Add("X-API-KEY", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.ApiKeyPrefix.Add("bearer", "Bearer");
+            // Configuration.Default.ApiKeyPrefix.Add("X-API-KEY", "Bearer");
 
             var apiInstance = new DomainApi();
             var body = new DomainCreateUpdate(); // DomainCreateUpdate | 
@@ -8618,9 +8618,9 @@ namespace Example
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: bearerAuth
-Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('bearer', 'YOUR_API_KEY');
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-KEY', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('bearer', 'Bearer');
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-KEY', 'Bearer');
 
 $api_instance = new Swagger\Client\Api\DomainApi();
 $body = {
@@ -8645,9 +8645,9 @@ use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::DomainApi;
 
 # Configure API key authorization: bearerAuth
-$WWW::SwaggerClient::Configuration::api_key->{'bearer'} = 'YOUR_API_KEY';
+$WWW::SwaggerClient::Configuration::api_key->{'X-API-KEY'} = 'YOUR_API_KEY';
 # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-#$WWW::SwaggerClient::Configuration::api_key_prefix->{'bearer'} = "Bearer";
+#$WWW::SwaggerClient::Configuration::api_key_prefix->{'X-API-KEY'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::DomainApi->new();
 my $body = WWW::SwaggerClient::Object::DomainCreateUpdate->new(); # DomainCreateUpdate | 
@@ -8669,9 +8669,9 @@ from swagger_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-swagger_client.configuration.api_key['bearer'] = 'YOUR_API_KEY'
+swagger_client.configuration.api_key['X-API-KEY'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# swagger_client.configuration.api_key_prefix['bearer'] = 'Bearer'
+# swagger_client.configuration.api_key_prefix['X-API-KEY'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = swagger_client.DomainApi()
@@ -8995,7 +8995,7 @@ $(document).ready(function() {
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Domain-domainDelete-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X DELETE -H "bearer: [[apiKey]]" "http://localhost/api/v1.0/domain/{domainName}"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X DELETE -H "X-API-KEY: [[apiKey]]" "http://localhost/api/v1.0/domain/{domainName}"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Domain-domainDelete-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -9056,9 +9056,9 @@ public class DomainApiExample {
                               <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
 
 // Configure API key authorization: (authentication scheme: bearerAuth)
-[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"bearer"];
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-API-KEY"];
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"bearer"];
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-API-KEY"];
 
 String *domainName = domainName_example; // 
 
@@ -9084,7 +9084,7 @@ var defaultClient = CertascaleApi.ApiClient.instance;
 var bearerAuth = defaultClient.authentications['bearerAuth'];
 bearerAuth.apiKey = "YOUR API KEY"
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//bearerAuth.apiKeyPrefix['bearer'] = "Token"
+//bearerAuth.apiKeyPrefix['X-API-KEY'] = "Token"
 
 var api = new CertascaleApi.DomainApi()
 
@@ -9120,9 +9120,9 @@ namespace Example
         {
             
             // Configure API key authorization: bearerAuth
-            Configuration.Default.ApiKey.Add("bearer", "YOUR_API_KEY");
+            Configuration.Default.ApiKey.Add("X-API-KEY", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.ApiKeyPrefix.Add("bearer", "Bearer");
+            // Configuration.Default.ApiKeyPrefix.Add("X-API-KEY", "Bearer");
 
             var apiInstance = new DomainApi();
             var domainName = domainName_example;  // String | 
@@ -9147,9 +9147,9 @@ namespace Example
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: bearerAuth
-Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('bearer', 'YOUR_API_KEY');
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-KEY', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('bearer', 'Bearer');
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-KEY', 'Bearer');
 
 $api_instance = new Swagger\Client\Api\DomainApi();
 $domainName = domainName_example; // String | 
@@ -9169,9 +9169,9 @@ use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::DomainApi;
 
 # Configure API key authorization: bearerAuth
-$WWW::SwaggerClient::Configuration::api_key->{'bearer'} = 'YOUR_API_KEY';
+$WWW::SwaggerClient::Configuration::api_key->{'X-API-KEY'} = 'YOUR_API_KEY';
 # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-#$WWW::SwaggerClient::Configuration::api_key_prefix->{'bearer'} = "Bearer";
+#$WWW::SwaggerClient::Configuration::api_key_prefix->{'X-API-KEY'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::DomainApi->new();
 my $domainName = domainName_example; # String | 
@@ -9193,9 +9193,9 @@ from swagger_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-swagger_client.configuration.api_key['bearer'] = 'YOUR_API_KEY'
+swagger_client.configuration.api_key['X-API-KEY'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# swagger_client.configuration.api_key_prefix['bearer'] = 'Bearer'
+# swagger_client.configuration.api_key_prefix['X-API-KEY'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = swagger_client.DomainApi()
@@ -9494,7 +9494,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Domain-domainGet-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET -H "bearer: [[apiKey]]" "http://localhost/api/v1.0/domain/{domainName}"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET -H "X-API-KEY: [[apiKey]]" "http://localhost/api/v1.0/domain/{domainName}"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Domain-domainGet-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -9555,9 +9555,9 @@ public class DomainApiExample {
                               <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
 
 // Configure API key authorization: (authentication scheme: bearerAuth)
-[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"bearer"];
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-API-KEY"];
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"bearer"];
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-API-KEY"];
 
 String *domainName = domainName_example; // 
 
@@ -9583,7 +9583,7 @@ var defaultClient = CertascaleApi.ApiClient.instance;
 var bearerAuth = defaultClient.authentications['bearerAuth'];
 bearerAuth.apiKey = "YOUR API KEY"
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//bearerAuth.apiKeyPrefix['bearer'] = "Token"
+//bearerAuth.apiKeyPrefix['X-API-KEY'] = "Token"
 
 var api = new CertascaleApi.DomainApi()
 
@@ -9619,9 +9619,9 @@ namespace Example
         {
             
             // Configure API key authorization: bearerAuth
-            Configuration.Default.ApiKey.Add("bearer", "YOUR_API_KEY");
+            Configuration.Default.ApiKey.Add("X-API-KEY", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.ApiKeyPrefix.Add("bearer", "Bearer");
+            // Configuration.Default.ApiKeyPrefix.Add("X-API-KEY", "Bearer");
 
             var apiInstance = new DomainApi();
             var domainName = domainName_example;  // String | 
@@ -9646,9 +9646,9 @@ namespace Example
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: bearerAuth
-Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('bearer', 'YOUR_API_KEY');
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-KEY', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('bearer', 'Bearer');
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-KEY', 'Bearer');
 
 $api_instance = new Swagger\Client\Api\DomainApi();
 $domainName = domainName_example; // String | 
@@ -9668,9 +9668,9 @@ use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::DomainApi;
 
 # Configure API key authorization: bearerAuth
-$WWW::SwaggerClient::Configuration::api_key->{'bearer'} = 'YOUR_API_KEY';
+$WWW::SwaggerClient::Configuration::api_key->{'X-API-KEY'} = 'YOUR_API_KEY';
 # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-#$WWW::SwaggerClient::Configuration::api_key_prefix->{'bearer'} = "Bearer";
+#$WWW::SwaggerClient::Configuration::api_key_prefix->{'X-API-KEY'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::DomainApi->new();
 my $domainName = domainName_example; # String | 
@@ -9692,9 +9692,9 @@ from swagger_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-swagger_client.configuration.api_key['bearer'] = 'YOUR_API_KEY'
+swagger_client.configuration.api_key['X-API-KEY'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# swagger_client.configuration.api_key_prefix['bearer'] = 'Bearer'
+# swagger_client.configuration.api_key_prefix['X-API-KEY'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = swagger_client.DomainApi()
@@ -9993,7 +9993,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Domain-domainList-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET -H "bearer: [[apiKey]]" "http://localhost/api/v1.0/domain?next_id="</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET -H "X-API-KEY: [[apiKey]]" "http://localhost/api/v1.0/domain?next_id="</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Domain-domainList-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -10054,9 +10054,9 @@ public class DomainApiExample {
                               <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
 
 // Configure API key authorization: (authentication scheme: bearerAuth)
-[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"bearer"];
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-API-KEY"];
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"bearer"];
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-API-KEY"];
 
 Integer *nextId = 56; //  (optional)
 
@@ -10082,7 +10082,7 @@ var defaultClient = CertascaleApi.ApiClient.instance;
 var bearerAuth = defaultClient.authentications['bearerAuth'];
 bearerAuth.apiKey = "YOUR API KEY"
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//bearerAuth.apiKeyPrefix['bearer'] = "Token"
+//bearerAuth.apiKeyPrefix['X-API-KEY'] = "Token"
 
 var api = new CertascaleApi.DomainApi()
 
@@ -10119,9 +10119,9 @@ namespace Example
         {
             
             // Configure API key authorization: bearerAuth
-            Configuration.Default.ApiKey.Add("bearer", "YOUR_API_KEY");
+            Configuration.Default.ApiKey.Add("X-API-KEY", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.ApiKeyPrefix.Add("bearer", "Bearer");
+            // Configuration.Default.ApiKeyPrefix.Add("X-API-KEY", "Bearer");
 
             var apiInstance = new DomainApi();
             var nextId = 56;  // Integer |  (optional) 
@@ -10146,9 +10146,9 @@ namespace Example
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: bearerAuth
-Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('bearer', 'YOUR_API_KEY');
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-KEY', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('bearer', 'Bearer');
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-KEY', 'Bearer');
 
 $api_instance = new Swagger\Client\Api\DomainApi();
 $nextId = 56; // Integer | 
@@ -10168,9 +10168,9 @@ use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::DomainApi;
 
 # Configure API key authorization: bearerAuth
-$WWW::SwaggerClient::Configuration::api_key->{'bearer'} = 'YOUR_API_KEY';
+$WWW::SwaggerClient::Configuration::api_key->{'X-API-KEY'} = 'YOUR_API_KEY';
 # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-#$WWW::SwaggerClient::Configuration::api_key_prefix->{'bearer'} = "Bearer";
+#$WWW::SwaggerClient::Configuration::api_key_prefix->{'X-API-KEY'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::DomainApi->new();
 my $nextId = 56; # Integer | 
@@ -10192,9 +10192,9 @@ from swagger_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-swagger_client.configuration.api_key['bearer'] = 'YOUR_API_KEY'
+swagger_client.configuration.api_key['X-API-KEY'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# swagger_client.configuration.api_key_prefix['bearer'] = 'Bearer'
+# swagger_client.configuration.api_key_prefix['X-API-KEY'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = swagger_client.DomainApi()
@@ -10493,7 +10493,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Notification-notificationAcknowledge-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X PUT -H "bearer: [[apiKey]]" "http://localhost/api/v1.0/notification/{notificationId}"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X PUT -H "X-API-KEY: [[apiKey]]" "http://localhost/api/v1.0/notification/{notificationId}"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Notification-notificationAcknowledge-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -10562,9 +10562,9 @@ public class NotificationApiExample {
                               <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
 
 // Configure API key authorization: (authentication scheme: bearerAuth)
-[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"bearer"];
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-API-KEY"];
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"bearer"];
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-API-KEY"];
 
 String *notificationId = notificationId_example; // 
 NotificationUpdate *body = {
@@ -10595,7 +10595,7 @@ var defaultClient = CertascaleApi.ApiClient.instance;
 var bearerAuth = defaultClient.authentications['bearerAuth'];
 bearerAuth.apiKey = "YOUR API KEY"
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//bearerAuth.apiKeyPrefix['bearer'] = "Token"
+//bearerAuth.apiKeyPrefix['X-API-KEY'] = "Token"
 
 var api = new CertascaleApi.NotificationApi()
 
@@ -10636,9 +10636,9 @@ namespace Example
         {
             
             // Configure API key authorization: bearerAuth
-            Configuration.Default.ApiKey.Add("bearer", "YOUR_API_KEY");
+            Configuration.Default.ApiKey.Add("X-API-KEY", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.ApiKeyPrefix.Add("bearer", "Bearer");
+            // Configuration.Default.ApiKeyPrefix.Add("X-API-KEY", "Bearer");
 
             var apiInstance = new NotificationApi();
             var notificationId = notificationId_example;  // String | 
@@ -10664,9 +10664,9 @@ namespace Example
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: bearerAuth
-Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('bearer', 'YOUR_API_KEY');
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-KEY', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('bearer', 'Bearer');
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-KEY', 'Bearer');
 
 $api_instance = new Swagger\Client\Api\NotificationApi();
 $notificationId = notificationId_example; // String | 
@@ -10690,9 +10690,9 @@ use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::NotificationApi;
 
 # Configure API key authorization: bearerAuth
-$WWW::SwaggerClient::Configuration::api_key->{'bearer'} = 'YOUR_API_KEY';
+$WWW::SwaggerClient::Configuration::api_key->{'X-API-KEY'} = 'YOUR_API_KEY';
 # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-#$WWW::SwaggerClient::Configuration::api_key_prefix->{'bearer'} = "Bearer";
+#$WWW::SwaggerClient::Configuration::api_key_prefix->{'X-API-KEY'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::NotificationApi->new();
 my $notificationId = notificationId_example; # String | 
@@ -10715,9 +10715,9 @@ from swagger_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-swagger_client.configuration.api_key['bearer'] = 'YOUR_API_KEY'
+swagger_client.configuration.api_key['X-API-KEY'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# swagger_client.configuration.api_key_prefix['bearer'] = 'Bearer'
+# swagger_client.configuration.api_key_prefix['X-API-KEY'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = swagger_client.NotificationApi()
@@ -11108,7 +11108,7 @@ $(document).ready(function() {
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Notification-notificationGet-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET -H "bearer: [[apiKey]]" "http://localhost/api/v1.0/notification/{notificationId}"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET -H "X-API-KEY: [[apiKey]]" "http://localhost/api/v1.0/notification/{notificationId}"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Notification-notificationGet-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -11169,9 +11169,9 @@ public class NotificationApiExample {
                               <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
 
 // Configure API key authorization: (authentication scheme: bearerAuth)
-[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"bearer"];
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-API-KEY"];
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"bearer"];
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-API-KEY"];
 
 String *notificationId = notificationId_example; // 
 
@@ -11197,7 +11197,7 @@ var defaultClient = CertascaleApi.ApiClient.instance;
 var bearerAuth = defaultClient.authentications['bearerAuth'];
 bearerAuth.apiKey = "YOUR API KEY"
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//bearerAuth.apiKeyPrefix['bearer'] = "Token"
+//bearerAuth.apiKeyPrefix['X-API-KEY'] = "Token"
 
 var api = new CertascaleApi.NotificationApi()
 
@@ -11233,9 +11233,9 @@ namespace Example
         {
             
             // Configure API key authorization: bearerAuth
-            Configuration.Default.ApiKey.Add("bearer", "YOUR_API_KEY");
+            Configuration.Default.ApiKey.Add("X-API-KEY", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.ApiKeyPrefix.Add("bearer", "Bearer");
+            // Configuration.Default.ApiKeyPrefix.Add("X-API-KEY", "Bearer");
 
             var apiInstance = new NotificationApi();
             var notificationId = notificationId_example;  // String | 
@@ -11260,9 +11260,9 @@ namespace Example
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: bearerAuth
-Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('bearer', 'YOUR_API_KEY');
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-KEY', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('bearer', 'Bearer');
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-KEY', 'Bearer');
 
 $api_instance = new Swagger\Client\Api\NotificationApi();
 $notificationId = notificationId_example; // String | 
@@ -11282,9 +11282,9 @@ use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::NotificationApi;
 
 # Configure API key authorization: bearerAuth
-$WWW::SwaggerClient::Configuration::api_key->{'bearer'} = 'YOUR_API_KEY';
+$WWW::SwaggerClient::Configuration::api_key->{'X-API-KEY'} = 'YOUR_API_KEY';
 # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-#$WWW::SwaggerClient::Configuration::api_key_prefix->{'bearer'} = "Bearer";
+#$WWW::SwaggerClient::Configuration::api_key_prefix->{'X-API-KEY'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::NotificationApi->new();
 my $notificationId = notificationId_example; # String | 
@@ -11306,9 +11306,9 @@ from swagger_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-swagger_client.configuration.api_key['bearer'] = 'YOUR_API_KEY'
+swagger_client.configuration.api_key['X-API-KEY'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# swagger_client.configuration.api_key_prefix['bearer'] = 'Bearer'
+# swagger_client.configuration.api_key_prefix['X-API-KEY'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = swagger_client.NotificationApi()
@@ -11650,7 +11650,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Notification-notificationList-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET -H "bearer: [[apiKey]]" "http://localhost/api/v1.0/notification?next_id="</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET -H "X-API-KEY: [[apiKey]]" "http://localhost/api/v1.0/notification?next_id="</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Notification-notificationList-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -11711,9 +11711,9 @@ public class NotificationApiExample {
                               <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
 
 // Configure API key authorization: (authentication scheme: bearerAuth)
-[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"bearer"];
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-API-KEY"];
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"bearer"];
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-API-KEY"];
 
 Integer *nextId = 56; //  (optional)
 
@@ -11739,7 +11739,7 @@ var defaultClient = CertascaleApi.ApiClient.instance;
 var bearerAuth = defaultClient.authentications['bearerAuth'];
 bearerAuth.apiKey = "YOUR API KEY"
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//bearerAuth.apiKeyPrefix['bearer'] = "Token"
+//bearerAuth.apiKeyPrefix['X-API-KEY'] = "Token"
 
 var api = new CertascaleApi.NotificationApi()
 
@@ -11776,9 +11776,9 @@ namespace Example
         {
             
             // Configure API key authorization: bearerAuth
-            Configuration.Default.ApiKey.Add("bearer", "YOUR_API_KEY");
+            Configuration.Default.ApiKey.Add("X-API-KEY", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.ApiKeyPrefix.Add("bearer", "Bearer");
+            // Configuration.Default.ApiKeyPrefix.Add("X-API-KEY", "Bearer");
 
             var apiInstance = new NotificationApi();
             var nextId = 56;  // Integer |  (optional) 
@@ -11803,9 +11803,9 @@ namespace Example
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: bearerAuth
-Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('bearer', 'YOUR_API_KEY');
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-KEY', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('bearer', 'Bearer');
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-KEY', 'Bearer');
 
 $api_instance = new Swagger\Client\Api\NotificationApi();
 $nextId = 56; // Integer | 
@@ -11825,9 +11825,9 @@ use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::NotificationApi;
 
 # Configure API key authorization: bearerAuth
-$WWW::SwaggerClient::Configuration::api_key->{'bearer'} = 'YOUR_API_KEY';
+$WWW::SwaggerClient::Configuration::api_key->{'X-API-KEY'} = 'YOUR_API_KEY';
 # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-#$WWW::SwaggerClient::Configuration::api_key_prefix->{'bearer'} = "Bearer";
+#$WWW::SwaggerClient::Configuration::api_key_prefix->{'X-API-KEY'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::NotificationApi->new();
 my $nextId = 56; # Integer | 
@@ -11849,9 +11849,9 @@ from swagger_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-swagger_client.configuration.api_key['bearer'] = 'YOUR_API_KEY'
+swagger_client.configuration.api_key['X-API-KEY'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# swagger_client.configuration.api_key_prefix['bearer'] = 'Bearer'
+# swagger_client.configuration.api_key_prefix['X-API-KEY'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = swagger_client.NotificationApi()
@@ -12129,7 +12129,7 @@ except ApiException as e:
           </div>
           <div id="generator">
             <div class="content">
-              Generated 2018-12-28T14:32:34.862+01:00
+              Generated 2019-01-25T15:24:04.396+01:00
             </div>
           </div>
       </div>

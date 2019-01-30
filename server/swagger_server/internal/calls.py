@@ -10,10 +10,13 @@ from swagger_server.models.account_definition import AccountDefinition as swg_Ac
 from swagger_server.models.account_definition_list import AccountDefinitionList as swg_AccountDefinitionList
 from swagger_server.models.api_key import ApiKey as swg_ApiKey
 
+from flask import request
 
 PAGING_SIZE = 30
 
 MAX_KEY_PER_ACCOUNT = 10
+
+AUTH_HEADER_NAME = 'X-API-KEY'
 
 def _render_account(db_account):
     tags = {}
@@ -28,7 +31,56 @@ def _render_account(db_account):
         last_modification_date=db_account.last_modification_date,
     )
 
+
+def _access_deny(api_msg='access deny, invalid/missing API key',
+        log_msg='access deny, invalid/missing API key'):
+    builtins.CAS_CONTEXT['logger'].info(log_msg)
+    return swg_DefaultError(code='AccessDeny', message=api_msg), 403
+
+
+def _insuf_perm(api_msg='access deny, invalid/missing API key',
+        log_msg='access deny, invalid/missing API key'):
+    builtins.CAS_CONTEXT['logger'].info(log_msg)
+    return swg_DefaultError(code='InsufficientPermission', message=api_msg), 403
+
+
+def access_control():
+    api_key = request.headers.get(AUTH_HEADER_NAME)
+    if api_key is None:
+        return None
+    secret_hash = hashlib.sha512(api_key.encode('utf-8')).hexdigest()
+    session = builtins.CAS_CONTEXT['db_session']()
+    key = session.query(DbApiKey).filter_by(secret_hash=secret_hash).first()
+    if key is not None:
+        return {'id': key.account.id,
+                'perm': key.account.permission,
+                'name': key.account.name
+        }
+    else:
+        return None
+
+
+def _check_perm(account, allowed_roles, action, checked_id=None,
+                api_msg="access deny, not enough permission",
+                log_msg="access deny, not enough permission for user '%s' to do '%s'"):
+    if account is None:
+        return _access_deny(), 403
+
+    if account['perm'] not in allowed_roles \
+        or (checked_id and checked_id != account['name']):
+        return _insuf_perm(
+                    log_msg=log_msg % (account['name'], action),
+                    api_msg=api_msg,
+                ), 403
+    return None
+
+
 def _account_create(body):
+    account =  access_control()
+    perm = _check_perm(account, ['AdminWrite'], 'create account')
+    if perm:
+        return perm
+
     session = builtins.CAS_CONTEXT['db_session']()
     name = body.name
     permission = body.permission
@@ -66,7 +118,18 @@ def _account_create(body):
     session.close()
     return ret 
 
+
 def _account_delete(accountId):
+    account =  access_control()
+
+    if account is None:
+        return _access_deny(log_msg="access deny on account delete")
+
+    if account['perm'] not in ['AdminWrite']:
+        return _access_deny(
+                log_msg="user '%s' (perm: %s) doesn't have permission to delete an account" % (account['name'], account['perm']),
+                api_msg="deleting an account requires admin permission",
+                )
     session = builtins.CAS_CONTEXT['db_session']()
     account = session.query(DbAccount).filter_by(name=accountId).first()
     # TODO handle cascading or error messages when certificates/domains/notifications are
@@ -89,7 +152,17 @@ def _account_delete(accountId):
     session.close()
     return ret , ret_code
 
+
 def _account_get(accountId):
+    if account is None:
+        return _access_deny(log_msg="access deny on account delete")
+    if account['perm'] in ['AdminWrite', 'AdminRead'] or \
+        account['name'] != accountId and account['perm'] in ['Read', 'Write', 'SelfRegisterDomain']:
+        return _access_deny(
+                log_msg="user '%s' (perm: %s) doesn't have permission to read an account" % (account['name'], account['perm']),
+                api_msg="read an account requires admin (read) permission",
+                )
+
     session = builtins.CAS_CONTEXT['db_session']()
     account = session.query(DbAccount).filter_by(name=accountId).first()
     if account is None:

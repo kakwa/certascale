@@ -51,6 +51,7 @@ class DbApiKey(Base):
     creation_date = Column(DateTime(), nullable=False)
     last_modification_date = Column(DateTime())
     secret_prefix = Column(String(8), nullable=False)
+    account = relationship("DbAccount")
 
     # foreign keys
     account_id = Column(Integer, ForeignKey('account.id'), nullable=False)

@@ -228,8 +228,8 @@ class Configuration(six.with_metaclass(TypeWithDefault, object)):
                 {
                     'type': 'api_key',
                     'in': 'header',
-                    'key': 'bearer',
-                    'value': self.get_api_key_with_prefix('bearer')
+                    'key': 'X-API-KEY',
+                    'value': self.get_api_key_with_prefix('X-API-KEY')
                 },
 
         }

@@ -52,9 +52,9 @@ from swagger_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-swagger_client.configuration.api_key['bearer'] = 'YOUR_API_KEY'
+swagger_client.configuration.api_key['X-API-KEY'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# swagger_client.configuration.api_key_prefix['bearer'] = 'Bearer'
+# swagger_client.configuration.api_key_prefix['X-API-KEY'] = 'Bearer'
 # create an instance of the API class
 api_instance = swagger_client.AccountApi()
 body = swagger_client.AccountCreateUpdate() # AccountCreateUpdate | Data structure to create the account
@@ -121,7 +121,7 @@ Class | Method | HTTP request | Description
 ## bearerAuth
 
 - **Type**: API key
-- **API key parameter name**: bearer
+- **API key parameter name**: X-API-KEY
 - **Location**: HTTP header
 
 
